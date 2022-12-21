@@ -1,4 +1,4 @@
-package com.example.checkers;
+package Widok;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;

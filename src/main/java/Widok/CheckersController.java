@@ -1,4 +1,4 @@
-package com.example.checkers;
+package Widok;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
