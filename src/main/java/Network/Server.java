@@ -1,67 +1,52 @@
 package Network;
 
+import Model.Gamestate;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
-import java.net.*;
-import java.io.*;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class Server
-{
-    private Socket socket = null;
-    private ServerSocket server = null;
-    private DataInputStream in = null;
-    private PrintWriter out = null;
+public class Server {
 
-    // constructor with port
-    public Server(int port)
-    {
-        // starts server and waits for a connection
-        try
+    private static Gamestate game = new Gamestate();
+    private static final int port = 4444;
+    private static ClientHandler White = null;
+    private static ClientHandler Black = null;
+    private static ExecutorService pool = Executors.newFixedThreadPool(2);
+    public static void main(String [] args) throws IOException {
+        ServerSocket listener = new ServerSocket(port);
+
+        while (Black == null)
         {
-            server = new ServerSocket(port);
-            System.out.println("Server started");
-
-            System.out.println("Waiting for a client ...");
-
-
-            socket = server.accept();
-            System.out.println("Client accepted");
-            socket = server.accept();
-            System.out.println("Client2 accepted");
-
-            // takes input from the client socket
-            in = new DataInputStream(
-                    new BufferedInputStream(socket.getInputStream()));
-
-            String line = "";
-
-            // reads message from client until "Over" is sent
-            while (!line.equals("Over"))
+            System.out.println("Server is waitintg for connection");
+            Socket client = listener.accept();
+            if(White == null)
             {
-                try
-                {
-                    line = in.readUTF();
-                    System.out.println(line);
-
-                }
-                catch(IOException i)
-                {
-                    System.out.println(i);
-                }
+                White = new ClientHandler(client);
+                pool.execute(White);
+                System.out.println("First Client Connected");
             }
-            System.out.println("Closing connection");
-
-            // close connection
-            socket.close();
-            in.close();
+            else
+            {
+                Black = new ClientHandler(client);
+                pool.execute(Black);
+                System.out.println("Second Client Connected");
+            }
         }
-        catch(IOException i)
-        {
-            System.out.println(i);
-        }
-    }
 
-    public static void main(String args[])
-    {
-        Server server = new Server(4444);
+
+
+
+
+
+
+
     }
 }

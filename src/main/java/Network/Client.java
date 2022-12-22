@@ -1,61 +1,34 @@
 package Network;
 
-import java.net.*;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.Scanner;
+
 public class Client {
-    private Socket socket = null;
-    private DataInputStream input = null;
-    private DataOutputStream output = null;
-
-    public Client(String address, int port)
+    public static void main(String[] args) throws IOException
     {
-        try
-        {
-            socket = new Socket(address, port);
-            System.out.println("Connected");
+        Socket socket = new Socket("localhost", 4444);
+        PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
+        BufferedReader input = new BufferedReader(new InputStreamReader( socket.getInputStream() ));
 
-            input = new DataInputStream(System.in);
-            output = new DataOutputStream(socket.getOutputStream());
-        }
-        catch(UnknownHostException u)
+        while (true)
         {
-            System.out.println(u);
-        }
-        catch(IOException i)
-        {
-            System.out.println(i);
-        }
+            System.out.println("> ");
+            Scanner scan = new Scanner(System.in);
+            String command = scan.nextLine();
+            if (command.equals("quit")) break;
+            out.println(command);
 
-        String line ="";
-
-        while(!line.equals("Over"))
-        {
-            try
-            {
-                line = input.readLine();
-                output.writeUTF(line);
-            }
-            catch(IOException i)
-            {
-                System.out.println(i);
-            }
+            String response = input.readLine();
+            System.out.println("Server says: " + response);
         }
 
-        try
-        {
-            input.close();
-            output.close();
-            socket.close();
-        }
-        catch(IOException i)
-        {
-            System.out.println(i);
-        }
+
+        socket.close();
+        System.exit(0);
     }
-
-    public static void main(String args[])
-    {
-        Client Bialy = new Client("localhost",4444);
-    }
-
 }
