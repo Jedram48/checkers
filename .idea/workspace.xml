@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Gamestate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Network/ClientHandler.java" afterDir="false" />
+    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="Network works !">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Client2.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +177,10 @@
       <workItem from="1671618661463" duration="3404000" />
       <workItem from="1671622196158" duration="8000" />
       <workItem from="1671624990204" duration="1258000" />
-      <workItem from="1671640356840" duration="16354000" />
+      <workItem from="1671640356840" duration="19592000" />
+      <workItem from="1671697519911" duration="1117000" />
+      <workItem from="1671708294194" duration="1654000" />
+      <workItem from="1671803966638" duration="1779000" />
     </task>
     <task id="LOCAL-00001" summary="Initial version">
       <created>1671564315944</created>
@@ -210,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671658941890</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="commit1 network still doesnt work2">
+      <created>1671669770151</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1671669770151</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,7 +234,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Test-version" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -242,6 +249,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial version" />
     <MESSAGE value="commit1 network still doesnt work" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit1 network still doesnt work" />
+    <MESSAGE value="commit1 network still doesnt work2" />
+    <MESSAGE value="Network works !" />
+    <option name="LAST_COMMIT_MESSAGE" value="Network works !" />
   </component>
 </project>

@@ -11,23 +11,34 @@ import java.util.Scanner;
 public class Client {
     public static void main(String[] args) throws IOException
     {
+        Scanner scan = new Scanner(System.in);
+        boolean myMove = true;
         Socket socket = new Socket("localhost", 4444);
         PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
         BufferedReader input = new BufferedReader(new InputStreamReader( socket.getInputStream() ));
 
+        if(input.readLine().equals("You are playing Black!")) myMove = false ;
+
         while (true)
         {
-            System.out.println("> ");
-            Scanner scan = new Scanner(System.in);
-            String command = scan.nextLine();
-            if (command.equals("quit")) break;
-            out.println(command);
+            System.out.println(input.readLine());
 
-            String response = input.readLine();
-            System.out.println("Server says: " + response);
+            if(myMove)
+            {
+                String move = scan.nextLine();
+                if(move.equals("end")) break;
+                out.println(move);
+            }
+            else
+            {
+                System.out.println(input.readLine());
+            }
+            myMove = !myMove;
+
         }
 
-
+        input.close();
+        out.close();
         socket.close();
         System.exit(0);
     }
