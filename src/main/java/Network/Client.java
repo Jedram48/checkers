@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class Client {
     public static void main(String[] args) throws IOException
     {
-        Scanner scan = new Scanner(System.in);
         boolean myMove = true;
+        Scanner scan = new Scanner(System.in);
         Socket socket = new Socket("localhost", 4444);
         PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
         BufferedReader input = new BufferedReader(new InputStreamReader( socket.getInputStream() ));

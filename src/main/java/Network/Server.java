@@ -1,22 +1,18 @@
 package Network;
 
-import Model.Gamestate;
+import Model.Game;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
 
 public class Server {
-
-    private static Gamestate game = new Gamestate();
     private static final int port = 4444;
-
+    private static Game game;
 
     public static void main(String [] args) throws IOException {
         boolean wMove = true;
@@ -35,6 +31,8 @@ public class Server {
         outW.println("You are playing White!");
         outB.println("You are playing Black!");
 
+        game = new Game();
+
         while(true)
         {
             if(wMove)
@@ -50,7 +48,7 @@ public class Server {
                 outB.println("Your turn!");
                 outW.println("Waiting for Black...");
                 String s = inB.readLine();
-                if(s.equals("null")) break;
+                if(s == null) break;
                 System.out.println(s);
                 outW.println("Black moved " + s);
             }
