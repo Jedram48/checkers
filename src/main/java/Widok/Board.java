@@ -37,21 +37,22 @@ public class Board {
                 }
                 else{
                     Field black;
-                    if(i<3){
-                        black = new Field(i,j,Color.BLACK);
-                        this.isOccupied[i][(j-1)/2] = true;
+                    int y = (j-1)/2;
+                    if(i<1){
+                        black = new Field(i,y,Color.BLACK);
+                        this.isOccupied[i][y] = true;
                     }
-                    else if(i>4){
-                        black = new Field(i,j,Color.WHITE);
+                    else if(i>6){
+                        black = new Field(i,y,Color.WHITE);
                         this.isOccupied[i][(j-1)/2] = true;
                     }
                     else{
-                        black = new Field(i,j);
-                        this.isOccupied[i][(j-1)/2] = false;
+                        black = new Field(i,y);
+                        this.isOccupied[i][y] = false;
                     }
                     setEvent(black);
                     this.board.getChildren().add(black);
-                    this.fields[i][(j-1)/2] = black;
+                    this.fields[i][y] = black;
                 }
             }
         }
