@@ -16,8 +16,12 @@ public class ClientConnection {
 
     }
 
-    public void sendRequest(){
-        this.out.println("move");
+    public void sendRequest(String request){
+        this.out.println(request);
+    }
+
+    public String massage() throws IOException {
+        return input.readLine();
     }
 
     public void connect() throws IOException {

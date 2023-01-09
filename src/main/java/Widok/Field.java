@@ -11,7 +11,7 @@ public class Field extends StackPane {
     public int row;
     public int col;
     private final int size = 100;
-    private Rectangle rect = new Rectangle(size,size,Color.BLACK);
+    private final Rectangle rect = new Rectangle(size,size,Color.BLACK);
     private Circle circle;
     boolean occupied = false;
 
@@ -23,6 +23,9 @@ public class Field extends StackPane {
     }
     Field(int x, int y, Color color){
         super();
+        this.row = x;
+        this.col = y;
+
         this.getChildren().add(rect);
         setCircle(color);
         this.occupied = true;
@@ -65,8 +68,8 @@ public class Field extends StackPane {
     public boolean isOccupied(){
         return occupied;
     }
-
-/*    public void handle(boolean[][] isOccupied) {
+/*
+    public void handle(boolean[][] isOccupied) {
         setOnMouseClicked(event -> {
             if (circle != null) {
                 // If the square has a circle, select it
@@ -86,7 +89,7 @@ public class Field extends StackPane {
             }
         });
     }
-
-    private static Field selectedSquare = null;
 */
+
+
 }

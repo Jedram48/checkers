@@ -1,7 +1,5 @@
 package Network;
 
-import Model.Game;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,7 +10,6 @@ import java.net.Socket;
 
 public class Server {
     private static final int port = 4444;
-    private static Game game;
 
     public static void main(String [] args) throws IOException {
         boolean wMove = true;

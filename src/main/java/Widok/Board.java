@@ -14,7 +14,8 @@ public class Board {
     ClientConnection client;
     TilePane board;
     Field[][] fields = new Field[8][4];
-    boolean[][] isOccupied = new boolean[8][4];
+    boolean[][] isOccupied = new boolean[8][8];
+    private Field selected;
     Board() {
         this.board = new TilePane();
         this.board.setPrefColumns(8);
@@ -30,7 +31,31 @@ public class Board {
 
     void setEvent(Field field){
         field.setOnMouseClicked(event -> {
-            client.sendRequest();
+            if (field.isOccupied() && this.selected == null) {
+                this.selected = field;
+            } else if (this.selected != null) {
+                String req;
+
+                if (!isOccupied[field.getPosX()][field.getPosY()]) {
+                    req = "MOVE ";
+                }
+                else{
+                    req = "BEAT ";
+                }
+
+                req = req.concat((this.selected.getPosX())+" ");
+                req = req.concat((this.selected.getPosY())+" ");
+                req = req.concat((field.getPosX())+" ");
+                req = req.concat((field.getPosY())+" ");
+
+                client.sendRequest(req);
+                this.selected = null;
+                try {
+                    System.out.println(client.massage());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         });
     }
 
@@ -43,22 +68,21 @@ public class Board {
                 }
                 else{
                     Field black;
-                    int y = (j-1)/2;
-                    if(i<1){
-                        black = new Field(i,y,Color.BLACK);
-                        this.isOccupied[i][y] = true;
+                    if(i<3){
+                        black = new Field(i,j,Color.BLACK);
+                        this.isOccupied[i][j] = true;
                     }
-                    else if(i>6){
-                        black = new Field(i,y,Color.WHITE);
-                        this.isOccupied[i][(j-1)/2] = true;
+                    else if(i>4){
+                        black = new Field(i,j,Color.WHITE);
+                        this.isOccupied[i][j] = true;
                     }
                     else{
-                        black = new Field(i,y);
-                        this.isOccupied[i][y] = false;
+                        black = new Field(i,j);
+                        this.isOccupied[i][j] = false;
                     }
                     setEvent(black);
                     this.board.getChildren().add(black);
-                    this.fields[i][y] = black;
+//                    this.fields[i][j] = black;
                 }
             }
         }
