@@ -1,23 +1,19 @@
 package Widok;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
-import java.awt.event.MouseEvent;
 
 public class Field extends StackPane {
 
-    int row;
-    int col;
-    int size = 100;
-    Rectangle rect = new Rectangle(size,size,Color.BLACK);
-    Circle circle;
-    boolean occupated = false;
+    public int row;
+    public int col;
+    private final int size = 100;
+    private Rectangle rect = new Rectangle(size,size,Color.BLACK);
+    private Circle circle;
+    boolean occupied = false;
 
     Field(int x, int y){
         super();
@@ -29,27 +25,27 @@ public class Field extends StackPane {
         super();
         this.getChildren().add(rect);
         setCircle(color);
-        this.occupated = true;
+        this.occupied = true;
 
     }
 
-    int getPosX(){
+    public int getPosX(){
         return this.row;
     }
 
-    int getPosY(){
+    public int getPosY(){
         return this.col;
     }
 
-    void setColor(Color color){
+    public void setColor(Color color){
         this.circle.setFill(color);
     }
     Color getColor(){
         return (Color) this.circle.getFill();
     }
 
-    void setCircle(Color color){
-        this.circle = new Circle(45, color);
+    public void setCircle(Color color){
+        this.circle = new Circle((int)(size / 2) - 5, color);
 
         if(color == Color.WHITE){this.circle.setStroke(Color.BLACK);}
         else if(color == Color.BLACK){this.circle.setStroke(Color.WHITE);}
@@ -57,20 +53,20 @@ public class Field extends StackPane {
         this.getChildren().add(this.circle);
     }
 
-    void removeCircle(){
+    public void removeCircle(){
         this.getChildren().remove(this.circle);
         this.circle = null;
     }
 
-    void switchOccupation(){
-        this.occupated = !this.occupated;
+    public void switchOccupation(){
+        this.occupied = !this.occupied;
     }
 
-    boolean isOccupated(){
-        return occupated;
+    public boolean isOccupied(){
+        return occupied;
     }
 
-    public void handle(Field[][] board, boolean[][] isOccupied) {
+/*    public void handle(boolean[][] isOccupied) {
         setOnMouseClicked(event -> {
             if (circle != null) {
                 // If the square has a circle, select it
@@ -92,5 +88,5 @@ public class Field extends StackPane {
     }
 
     private static Field selectedSquare = null;
-
+*/
 }

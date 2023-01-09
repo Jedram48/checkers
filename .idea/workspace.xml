@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="Board Fields and Colors&#10;Moving almost works properly">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="Board and moving is finished">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Network/ClientConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/CheckersController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Field.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,9 +195,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Checkers" />
+        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.TestingBoard" />
-        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Client2" />
       </list>
     </recent_temporary>
@@ -218,7 +221,8 @@
       <workItem from="1671803966638" duration="10407000" />
       <workItem from="1671867968355" duration="1851000" />
       <workItem from="1672843846118" duration="11485000" />
-      <workItem from="1673009203678" duration="298000" />
+      <workItem from="1673009203678" duration="1225000" />
+      <workItem from="1673267875475" duration="4698000" />
     </task>
     <task id="LOCAL-00001" summary="Initial version">
       <created>1671564315944</created>
@@ -276,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672859374060</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Board and moving is finished">
+      <created>1673009784106</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1673009784106</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,7 +323,8 @@
     <MESSAGE value="Network works !" />
     <MESSAGE value="Board Fields and Colors" />
     <MESSAGE value="Board Fields and Colors&#10;Moving almost works properly" />
-    <option name="LAST_COMMIT_MESSAGE" value="Board Fields and Colors&#10;Moving almost works properly" />
+    <MESSAGE value="Board and moving is finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Board and moving is finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

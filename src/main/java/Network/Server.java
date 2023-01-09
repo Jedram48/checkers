@@ -20,17 +20,23 @@ public class Server {
 
         Socket socketW = listener.accept();
         System.out.println("First Client connected!");
-        Socket socketB = listener.accept();
-        System.out.println("Second Client connected!");
+//        Socket socketB = listener.accept();
+//        System.out.println("Second Client connected!");
 
         BufferedReader inW = new BufferedReader(new InputStreamReader(socketW.getInputStream()));
-        BufferedReader inB = new BufferedReader(new InputStreamReader(socketB.getInputStream()));
+//        BufferedReader inB = new BufferedReader(new InputStreamReader(socketB.getInputStream()));
         PrintWriter outW = new PrintWriter(socketW.getOutputStream(),true);
-        PrintWriter outB = new PrintWriter(socketB.getOutputStream(), true);
+//        PrintWriter outB = new PrintWriter(socketB.getOutputStream(), true);
 
         outW.println("You are playing White!");
-        outB.println("You are playing Black!");
+//        outB.println("You are playing Black!");
 
+
+        for(int i = 0; i < 10; i++){
+            String str = inW.readLine();
+            System.out.println(str);
+        }
+/*
         game = new Game();
 
         while(true)
@@ -54,12 +60,12 @@ public class Server {
             }
             wMove = !wMove;
         }
-
-        inB.close();
+*/
+//        inB.close();
         inW.close();
-        outB.close();
+//        outB.close();
         outW.close();
-        socketB.close();
+//        socketB.close();
         socketW.close();
         }
     }

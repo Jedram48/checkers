@@ -1,19 +1,17 @@
 package Widok;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Node;
-import javafx.scene.input.MouseEvent;
+
+import Network.ClientConnection;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import java.util.ArrayList;
+
+import java.io.IOException;
+
 
 public class Board {
 
-    boolean in_action = false;
-    int[] pos = new int[2];
-    Color color;
+    ClientConnection client;
     TilePane board;
     Field[][] fields = new Field[8][4];
     boolean[][] isOccupied = new boolean[8][4];
@@ -22,10 +20,18 @@ public class Board {
         this.board.setPrefColumns(8);
         this.board.setPrefRows(8);
         genBoard();
+        try {
+            this.client = new ClientConnection();
+            this.client.connect();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     void setEvent(Field field){
-        field.handle(fields, isOccupied);
+        field.setOnMouseClicked(event -> {
+            client.sendRequest();
+        });
     }
 
     void genBoard(){
