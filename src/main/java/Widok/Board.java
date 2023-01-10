@@ -1,7 +1,6 @@
 package Widok;
 
 
-import Network.ClientConnection;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
