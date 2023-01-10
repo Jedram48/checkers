@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="test">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Board.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Color.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Field.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Piece.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/TestingBoard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/ClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/ClientConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Network/ClientConnection.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Srv.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Field.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +106,7 @@
       <recent name="Model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Checkers">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Checkers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Widok.Checkers" />
       <module name="Checkers" />
@@ -199,9 +195,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Checkers" />
         <item itemvalue="Application.Srv" />
-        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.TestingBoard" />
       </list>
