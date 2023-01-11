@@ -3,7 +3,7 @@ package Network;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
+
 
 public class Server {
 
@@ -27,7 +27,7 @@ public class Server {
         outB = new BufferedWriter(new OutputStreamWriter(black.getOutputStream()));
     }
 
-    public void startTheGame() throws IOException
+    public void startTheGame()
     {
         listenToWhite();
         listenToBlack();

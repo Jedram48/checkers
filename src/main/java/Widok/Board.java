@@ -5,12 +5,11 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-import java.io.IOException;
 
 
 public class Board {
 
-    ClientConnection client;
+
     TilePane board;
     Field[][] fields = new Field[8][4];
     boolean[][] isOccupied = new boolean[8][8];
@@ -20,12 +19,6 @@ public class Board {
         this.board.setPrefColumns(8);
         this.board.setPrefRows(8);
         genBoard();
-        try {
-            this.client = new ClientConnection();
-            this.client.connect();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     void setEvent(Field field){
@@ -47,13 +40,7 @@ public class Board {
                 req = req.concat((field.getPosX())+" ");
                 req = req.concat((field.getPosY())+" ");
 
-                client.sendRequest(req);
-                this.selected = null;
-                try {
-                    System.out.println(client.massage());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+
             }
         });
     }
