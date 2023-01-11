@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="test">
+    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="test server">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/ClientConnection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Srv.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Board.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
