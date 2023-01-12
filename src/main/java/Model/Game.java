@@ -11,7 +11,7 @@ public class Game {
         this.rules = new Rules();
         this.board = new Board(8,8,true);
         this.gameIsOn = true;
-        startingPosition();
+        testPosition();
     }
 
 
@@ -76,6 +76,14 @@ public class Game {
 
         board.whiteTurn = true;
     }
+
+    public void testPosition()
+    {
+        board.Fields[0][0].piece = new Piece(Color.WHITE, PieceType.KING);
+        board.Fields[6][6].piece = new Piece(Color.BLACK, PieceType.CHECKER);
+        board.whiteTurn = true;
+    }
+
 
 
 

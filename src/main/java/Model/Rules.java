@@ -35,7 +35,7 @@ public class Rules {
     public boolean isLegalforKING(Board board, Field startField, Field endField)
     {
         int d = distance(board, startField, endField);
-
+        return true;
 
     }
     public boolean isAttackPossible(Board board)
@@ -44,7 +44,7 @@ public class Rules {
         {
             for (int j = 0; j < board.sizeX; j++)
             {
-                if ( CHECKERCanAtack(board.Fields[j][i], board) ) return true;
+                if ( CHECKERCanAtack(board.Fields[j][i], board) || KINGcanAtack(board.Fields[j][i], board)) return true;
             }
         }
         return false;
@@ -85,32 +85,54 @@ public class Rules {
     {
         if (startField.piece == null) return false;
         if (startField.piece.pieceType == PieceType.CHECKER) return false;
+        if (board.whiteTurn == true && startField.piece.color == Color.BLACK) return false;
+        if (board.whiteTurn == false && startField.piece.color == Color.WHITE) return false;
         if ( KINGcanAtackinOneOfDiagonals(startField, board, 1) ||
         KINGcanAtackinOneOfDiagonals(startField, board, 2) ||
         KINGcanAtackinOneOfDiagonals(startField, board, 3) ||
         KINGcanAtackinOneOfDiagonals(startField, board, 4)) return true;
-
-
-
+        return false;
     }
 
     public boolean KINGcanAtackinOneOfDiagonals(Field startField, Board board, int diagonalNumber)
     {
-        int x = startField.x - 1;
-        int y = startField.y + 1;
+        int x;
+        int y;
+
+        if (diagonalNumber == 1)
+        {
+            x = startField.x + 1;
+            y = startField.y + 1;
+        }
+        else if (diagonalNumber == 2)
+        {
+            x = startField.x - 1;
+            y = startField.y + 1;
+        }
+        else if (diagonalNumber == 3)
+        {
+            x = startField.x - 1;
+            y = startField.y - 1;
+        }
+        else {
+            x = startField.x + 1;
+            y = startField.y - 1;
+
+        }
+
         boolean enemyPieceFound = false;
 
         while (board.validIndex(x, y))
         {
+            System.out.println(x + " " + y + " INDEX "  + enemyPieceFound);
             if (enemyPieceFound)
             {
-                if (board.Fields[x][y] == null) return true;
+                if (board.Fields[x][y].piece == null) return true;
                 else return false;
             }
             else
             {
-                if (board.Fields[x][y].piece == null) continue;
-                else
+                if (board.Fields[x][y].piece != null)
                 {
                     if (board.Fields[x][y].piece.color == startField.piece.color)
                         return false;

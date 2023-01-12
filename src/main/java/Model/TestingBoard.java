@@ -5,8 +5,9 @@ public class TestingBoard {
     {
         Game game = new Game();
         game.board.displayGamestate();
+        System.out.println(game.rules.KINGcanAtack(game.board.Fields[0][0], game.board));
 
-        Field startField = game.board.Fields[5][2];
+        /*Field startField = game.board.Fields[5][2];
         Field endField = game.board.Fields[4][3];
 
         Field startField2 = game.board.Fields[2][5];
@@ -31,7 +32,7 @@ public class TestingBoard {
         game.board.displayGamestate();
 
         System.out.println(game.rules.CHECKERCanAtack(game.board.Fields[1][6], game.board));
-
+*/
 
     }
 
