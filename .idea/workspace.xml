@@ -4,20 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="network works!">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Board.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Field.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Piece.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/PieceType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Rules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/TestingBoard.java" afterDir="false" />
+    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Logic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Squares.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Rules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Rules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/TestingBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/TestingBoard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +222,9 @@
       <workItem from="1673009203678" duration="1225000" />
       <workItem from="1673267875475" duration="14158000" />
       <workItem from="1673390850800" duration="10000" />
-      <workItem from="1673423726968" duration="22749000" />
+      <workItem from="1673423726968" duration="22996000" />
+      <workItem from="1673460294829" duration="32000" />
+      <workItem from="1673511613037" duration="4450000" />
     </task>
     <task id="LOCAL-00001" summary="Initial version">
       <created>1671564315944</created>
@@ -310,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673382196121</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Skipping works">
+      <created>1673460203063</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1673460203063</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,7 +349,8 @@
     <MESSAGE value="Board and moving is finished" />
     <MESSAGE value="test" />
     <MESSAGE value="network works!" />
-    <option name="LAST_COMMIT_MESSAGE" value="network works!" />
+    <MESSAGE value="Skipping works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Skipping works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

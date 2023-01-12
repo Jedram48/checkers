@@ -30,7 +30,7 @@ public class TestingBoard {
         System.out.println();
         game.board.displayGamestate();
 
-        System.out.println(game.rules.pieceCanAtack(game.board.Fields[1][6], game.board));
+        System.out.println(game.rules.CHECKERCanAtack(game.board.Fields[1][6], game.board));
 
 
     }

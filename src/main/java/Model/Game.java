@@ -35,7 +35,7 @@ public class Game {
             }
         }
 
-        if (!rules.pieceCanAtack(endField, board))
+        if (!rules.CHECKERCanAtack(endField, board))
         {
             board.whiteTurn = !board.whiteTurn;
             if ( endField.y == board.sizeY-1 &&
