@@ -1,5 +1,7 @@
 package Network;
 
+import Model.Board;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -9,22 +11,42 @@ public class Server {
 
     private ServerSocket serverSocket;
     Socket white;
-    BufferedReader inW;
-    BufferedWriter outW;
+    ObjectInputStream inW;
+    ObjectOutputStream outW;
     Socket black;
-    BufferedReader inB;
-    BufferedWriter outB;
+    ObjectInputStream inB;
+    ObjectOutputStream outB;
 
+    private boolean requestedW = true;
+    private boolean requestedB = true;
     public Server(ServerSocket serverSocket) throws IOException
     {
         this.serverSocket = serverSocket;
         System.out.println("Waiting for players to connect...");
         this.white = serverSocket.accept();
+        System.out.println("Player 1 connected");
         this.black = serverSocket.accept();
-        inW = new BufferedReader(new InputStreamReader(white.getInputStream()));
-        inB = new BufferedReader(new InputStreamReader(black.getInputStream()));
-        outW = new BufferedWriter(new OutputStreamWriter(white.getOutputStream()));
-        outB = new BufferedWriter(new OutputStreamWriter(black.getOutputStream()));
+        System.out.println("Player 2 connected");
+
+        outW = new ObjectOutputStream(white.getOutputStream());
+        outB = new ObjectOutputStream(black.getOutputStream());
+        inW = new ObjectInputStream(white.getInputStream());
+        inB = new ObjectInputStream(black.getInputStream());
+
+        System.out.println("Connection finished");
+    }
+
+    private void close() throws IOException {
+        this.outW.close();
+        this.outB.close();
+
+        this.inW.close();
+        this.inB.close();
+
+        this.white.close();
+        this.black.close();
+
+        this.serverSocket.close();
     }
 
     public void startTheGame()
@@ -42,10 +64,10 @@ public class Server {
                 {
                     while(true)
                     {
-                        String msg = inW.readLine();
-                        //try to update game using msg from white
-                        //if gamestate updated v
-                        broadcastGameState();
+                        if(requestedB) {
+                            broadcastGameState(outW);
+                            requestedB = false;
+                        }
                     }
                 } catch (IOException e)
                 {
@@ -65,10 +87,10 @@ public class Server {
                 {
                     while(true)
                     {
-                        String msg = inB.readLine();
-                        //try to update game using msg from black
-                        //if gamestate updated v
-                        broadcastGameState();
+                        if(requestedW) {
+                            broadcastGameState(outB);
+                            requestedW = false;
+                        }
                     }
                 } catch (IOException e)
                 {
@@ -79,18 +101,12 @@ public class Server {
         }).start();
     }
 
-    public void broadcastGameState() throws IOException
+    public void broadcastGameState(ObjectOutputStream out) throws IOException
     {
-        //getGameState()
-
-        outW.write("~~Gamestate~~");
-        outW.newLine();
-        outW.flush();
-
-        outB.write("~~Gamestate~~");
-        outB.newLine();
-        outB.flush();
+        Board board = new Board(8,8, true);
+        out.writeObject(board);
     }
+
 
 
     public static void main(String[] args) throws IOException
@@ -101,3 +117,7 @@ public class Server {
 
     }
 }
+
+
+//Board b = new Board(8,8, true);
+//this.outW.writeObject(b);

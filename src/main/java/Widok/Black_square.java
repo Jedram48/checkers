@@ -6,7 +6,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 
-public class Field extends StackPane {
+public class Black_square extends StackPane {
 
     public int row;
     public int col;
@@ -15,13 +15,13 @@ public class Field extends StackPane {
     private Circle circle;
     boolean occupied = false;
 
-    Field(int x, int y){
+    Black_square(int x, int y){
         super();
         this.row = x;
         this.col = y;
         this.getChildren().add(rect);
     }
-    Field(int x, int y, Color color){
+    Black_square(int x, int y, Color color){
         super();
         this.row = x;
         this.col = y;

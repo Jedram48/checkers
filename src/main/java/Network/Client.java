@@ -1,39 +1,34 @@
 package Network;
 
+import Model.Board;
+import Widok.Window;
+
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class Client {
     private Socket socket;
-    private BufferedReader in;
-    private BufferedWriter out;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
 
     public Client(Socket socket) throws IOException
     {
         this.socket = socket;
-        this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        this.out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        this.out = new ObjectOutputStream(socket.getOutputStream());
+        this.in = new ObjectInputStream(socket.getInputStream());
+    }
+
+    private void close() throws IOException {
+
+        this.out.close();
+        this.in.close();
+        this.socket.close();
     }
 
     public void sendMoves() throws IOException
     {
-        try
-        {
-            while(socket.isConnected())
-            {
-                Scanner scanner = new Scanner(System.in);
-                String msgToSend = scanner.nextLine(); //sending moves
-                out.write(msgToSend);
-                out.newLine();
-                out.flush();
-            }
-        } catch (IOException e)
-        {
-            System.err.println("Problem with sending moves...");
 
-        }
+
     }
 
     public void listenToServer()
@@ -41,29 +36,27 @@ public class Client {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try
+                while(true)
                 {
-                    while(true)
-                    {
-                        String msg = in.readLine();
-                        System.out.println("~~Gamestate from server~~");
+                    try {
+                        Board board = (Board) in.readObject();
+                        Window window = new Window(board);
+                    } catch (IOException | ClassNotFoundException e) {
+                        throw new RuntimeException(e);
                     }
-                } catch (IOException e)
-                {
-                    System.err.println("Problem with White's connection...");
                 }
 
             }
         }).start();
     }
 
-    public static void main(String[] args) throws IOException {
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Socket socket = new Socket("localhost", 1234);
         Client client = new Client(socket);
         client.listenToServer();
-        client.sendMoves();
-
     }
 
 
 }
+

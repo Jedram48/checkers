@@ -40,10 +40,10 @@ public class Game {
             board.whiteTurn = !board.whiteTurn;
             if ( endField.y == board.sizeY-1 &&
                     endField.piece.pieceType == PieceType.CHECKER &&
-                    endField.piece.color == Color.WHITE) endField.piece.pieceType = PieceType.KING;
+                    endField.piece.piececolor == Piece_color.WHITE) endField.piece.pieceType = PieceType.KING;
             else if ( endField.y == 0 &&
                     endField.piece.pieceType == PieceType.CHECKER &&
-                    endField.piece.color == Color.BLACK) endField.piece.pieceType = PieceType.KING;
+                    endField.piece.piececolor == Piece_color.BLACK) endField.piece.pieceType = PieceType.KING;
         }
 
     }
@@ -54,9 +54,9 @@ public class Game {
         {
             for(int j = 0; j < board.sizeX; j++)
             {
-                if (board.Fields[j][i].color == Color.BLACK)
+                if (board.Fields[j][i].color == Piece_color.BLACK)
                 {
-                    board.Fields[j][i].piece = new Piece(Color.BLACK, PieceType.CHECKER);
+                    board.Fields[j][i].piece = new Piece(Piece_color.BLACK, PieceType.CHECKER);
                 }
 
             }
@@ -66,9 +66,9 @@ public class Game {
         {
             for(int j = 0; j < board.sizeX; j++)
             {
-                if (board.Fields[j][i].color == Color.BLACK)
+                if (board.Fields[j][i].color == Piece_color.BLACK)
                 {
-                    board.Fields[j][i].piece = new Piece(Color.WHITE, PieceType.CHECKER);
+                    board.Fields[j][i].piece = new Piece(Piece_color.WHITE, PieceType.CHECKER);
                 }
 
             }

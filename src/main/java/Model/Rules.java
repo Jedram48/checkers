@@ -6,8 +6,8 @@ public class Rules {
     public boolean isLegal(Board board, Field startField, Field endField)
     {
         if (startField.piece == null) return false;
-        if (board.whiteTurn == true && startField.piece.color == Color.BLACK) return false;
-        if (board.whiteTurn == false && startField.piece.color == Color.WHITE) return false;
+        if (board.whiteTurn == true && startField.piece.piececolor == Piece_color.BLACK) return false;
+        if (board.whiteTurn == false && startField.piece.piececolor == Piece_color.WHITE) return false;
         int d = distance(board, startField, endField);
         if (d == -1) return false;
         if (isAttackPossible(board))
@@ -39,26 +39,26 @@ public class Rules {
     public boolean pieceCanAtack(Field startField, Board board)
     {
         if (startField.piece == null) return false;
-        if (board.whiteTurn == true && startField.piece.color == Color.BLACK) return false;
-        if (board.whiteTurn == false && startField.piece.color == Color.WHITE) return false;
-        if (startField.piece.color == Color.WHITE)
+        if (board.whiteTurn == true && startField.piece.piececolor == Piece_color.BLACK) return false;
+        if (board.whiteTurn == false && startField.piece.piececolor == Piece_color.WHITE) return false;
+        if (startField.piece.piececolor == Piece_color.WHITE)
         {
             if ( board.validIndex(startField.x - 2, startField.y + 2) &&
-                    board.Fields[startField.x - 1][startField.y + 1].piece.color == Color.BLACK &&
+                    board.Fields[startField.x - 1][startField.y + 1].piece.piececolor == Piece_color.BLACK &&
                     board.Fields[startField.x - 2][startField.y + 2].piece == null) return true;
             else if ( board.validIndex(startField.x + 2, startField.y - 2) &&
-                    board.Fields[startField.x + 1][startField.y + 1].piece.color == Color.BLACK &&
-                    board.Fields[startField.x + 2][startField.y + 2].piece == null) return true;
+                    board.Fields[startField.x + 1][startField.y - 1].piece.piececolor == Piece_color.BLACK &&
+                    board.Fields[startField.x + 2][startField.y - 2].piece == null) return true;
             else return false;
         }
-        else if (startField.piece.color == Color.BLACK)
+        else if (startField.piece.piececolor == Piece_color.BLACK)
         {
             System.out.println("check");
             if ( board.validIndex(startField.x - 2, startField.y - 2) &&
-                    board.Fields[startField.x - 1][startField.y - 1].piece.color == Color.WHITE &&
+                    board.Fields[startField.x - 1][startField.y - 1].piece.piececolor == Piece_color.WHITE &&
                     board.Fields[startField.x - 2][startField.y - 2].piece == null) return true;
             else if ( board.validIndex(startField.x + 2, startField.y - 2) &&
-                    board.Fields[startField.x + 1][startField.y - 1].piece.color == Color.WHITE &&
+                    board.Fields[startField.x + 1][startField.y - 1].piece.piececolor == Piece_color.WHITE &&
                     board.Fields[startField.x + 2][startField.y - 2].piece == null) return true;
             else return false;
 

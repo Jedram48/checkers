@@ -1,12 +1,12 @@
 package Model;
 
 public class Piece {
-    Color color;
+    Piece_color piececolor;
     PieceType pieceType;
 
-    public Piece(Color color, PieceType pieceType)
+    public Piece(Piece_color piececolor, PieceType pieceType)
     {
-        this.color = color;
+        this.piececolor = piececolor;
         this.pieceType = pieceType;
     }
 }

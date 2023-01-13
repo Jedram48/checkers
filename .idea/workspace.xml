@@ -4,20 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="network works!">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Board.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Field.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Piece.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/PieceType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Rules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/TestingBoard.java" afterDir="false" />
+    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="test server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Logic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Squares.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Piece_color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Rules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Rules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Play_board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Checkers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Checkers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Black_square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -112,7 +112,7 @@
       <recent name="Model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestingBoard">
+  <component name="RunManager" selected="Application.Checkers">
     <configuration name="Checkers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Widok.Checkers" />
       <module name="Checkers" />
@@ -139,12 +139,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Window.Main" />
+    <configuration name="Client2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Network.Client2" />
       <module name="Checkers" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Widok.Window.*" />
+          <option name="PATTERN" value="Network.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -165,8 +165,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Srv" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Network.Srv" />
+    <configuration name="clnt" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Network.clnt" />
       <module name="Checkers" />
       <extension name="coverage">
         <pattern>
@@ -178,12 +178,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestingBoard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Model.TestingBoard" />
+    <configuration name="srv" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Network.srv" />
       <module name="Checkers" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Model.*" />
+          <option name="PATTERN" value="Network.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -193,19 +193,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Client" />
-      <item itemvalue="Application.Srv" />
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.TestingBoard" />
       <item itemvalue="Application.Checkers" />
+      <item itemvalue="Application.Client2" />
+      <item itemvalue="Application.clnt" />
+      <item itemvalue="Application.srv" />
       <item itemvalue="Application.Server" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestingBoard" />
         <item itemvalue="Application.Checkers" />
+        <item itemvalue="Application.Client2" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.Srv" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.clnt" />
+        <item itemvalue="Application.srv" />
       </list>
     </recent_temporary>
   </component>
@@ -232,6 +232,7 @@
       <workItem from="1673267875475" duration="14158000" />
       <workItem from="1673390850800" duration="10000" />
       <workItem from="1673423726968" duration="22749000" />
+      <workItem from="1673570491756" duration="2458000" />
     </task>
     <task id="LOCAL-00001" summary="Initial version">
       <created>1671564315944</created>
