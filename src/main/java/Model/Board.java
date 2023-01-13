@@ -1,6 +1,8 @@
 package Model;
 
-public class Board {
+import java.io.Serializable;
+
+public class Board implements Serializable {
 
     Field[][] Fields;
     int sizeX;
@@ -28,7 +30,7 @@ public class Board {
             for(int j = 0; j < sizeX; j++)
             {
                 if (Fields[j][i].piece == null) System.out.print("0 ");
-                else if (Fields[j][i].piece.color == Color.WHITE)
+                else if (Fields[j][i].piece.color == Piece_color.WHITE)
                 {
                     if (Fields[j][i].piece.pieceType == PieceType.CHECKER)
                         System.out.print("1 ");
@@ -56,8 +58,8 @@ public class Board {
             {
                 for ( int j = 0 ; j < sizeX; j++)
                 {
-                    if ((i+j)%2 == 0) Fields[j][i] = new Field(Color.WHITE,j , i);
-                    else Fields[j][i] = new Field(Color.BLACK, j, i);
+                    if ((i+j)%2 == 0) Fields[j][i] = new Field(Piece_color.WHITE,j , i);
+                    else Fields[j][i] = new Field(Piece_color.BLACK, j, i);
                 }
             }
         }
@@ -67,8 +69,8 @@ public class Board {
             {
                 for ( int j = 0 ; j < sizeX; j++)
                 {
-                    if ((i+j)%2 == 0) Fields[j][i] = new Field(Color.BLACK, j, i);
-                    else Fields[j][i] = new Field(Color.WHITE, j, i);
+                    if ((i+j)%2 == 0) Fields[j][i] = new Field(Piece_color.BLACK, j, i);
+                    else Fields[j][i] = new Field(Piece_color.WHITE, j, i);
                 }
             }
         }
@@ -86,5 +88,20 @@ public class Board {
         else return Math.abs(startField.x - endField.x);
     }
 
+    public int getSizeX() {
+        return this.sizeX;
+    }
+
+    public int getSizeY(){
+        return this.sizeY;
+    }
+
+    public Field[][] getFields(){
+        return this.Fields;
+    }
+
+    public boolean isWhite(){
+        return this.A1isWhite;
+    }
 
 }

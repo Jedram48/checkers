@@ -1,6 +1,8 @@
 package Network;
 
 import Model.Board;
+import Model.Field;
+import Model.Game;
 import Widok.Window;
 
 import java.io.*;
@@ -11,9 +13,9 @@ public class Client {
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
-    public Client(Socket socket) throws IOException
+    public Client() throws IOException
     {
-        this.socket = socket;
+        this.socket = new Socket("localhost", 1234);
         this.out = new ObjectOutputStream(socket.getOutputStream());
         this.in = new ObjectInputStream(socket.getInputStream());
     }
@@ -25,12 +27,21 @@ public class Client {
         this.socket.close();
     }
 
-    public void sendMoves() throws IOException
+    public void sendMoves(Field[] fields) throws IOException
     {
-
-
+        this.out.writeObject(fields);
+        this.out.flush();
+        this.out.reset();
     }
 
+    public Board loadBoard() throws IOException, ClassNotFoundException {
+        return (Board) in.readObject();
+    }
+
+    public boolean isValid() throws IOException, ClassNotFoundException {
+        return (boolean) in.readObject();
+    }
+/*
     public void listenToServer()
     {
         new Thread(new Runnable() {
@@ -40,7 +51,8 @@ public class Client {
                 {
                     try {
                         Board board = (Board) in.readObject();
-                        Window window = new Window(board);
+                        Board b = new Game().getBoard();
+                        Window window = new Window(b);
                     } catch (IOException | ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     }
@@ -49,13 +61,7 @@ public class Client {
             }
         }).start();
     }
-
-
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Socket socket = new Socket("localhost", 1234);
-        Client client = new Client(socket);
-        client.listenToServer();
-    }
+*/
 
 
 }

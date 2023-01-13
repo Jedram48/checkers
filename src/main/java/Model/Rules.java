@@ -7,8 +7,8 @@ public class Rules {
     {
         if (startField.piece == null) return false;
         if (endField.piece != null) return false;
-        if (board.whiteTurn == true && startField.piece.color == Color.BLACK) return false;
-        if (board.whiteTurn == false && startField.piece.color == Color.WHITE) return false;
+        if (board.whiteTurn == true && startField.piece.color == Piece_color.BLACK) return false;
+        if (board.whiteTurn == false && startField.piece.color == Piece_color.WHITE) return false;
         if (startField.piece.pieceType == PieceType.CHECKER) return isLegalforCHECKER(board, startField, endField);
         else return isLegalforKING(board, startField, endField);
     }
@@ -66,27 +66,27 @@ public class Rules {
     {
         if (startField.piece == null) return false;
         if (startField.piece.pieceType == PieceType.KING) return false;
-        if (startField.piece.color == Color.WHITE)
+        if (startField.piece.color == Piece_color.WHITE)
         {
             if ( board.validIndex(startField.x - 2, startField.y + 2) &&
                     board.Fields[startField.x - 1][startField.y + 1].piece != null &&
-                    board.Fields[startField.x - 1][startField.y + 1].piece.color == Color.BLACK &&
+                    board.Fields[startField.x - 1][startField.y + 1].piece.color == Piece_color.BLACK &&
                     board.Fields[startField.x - 2][startField.y + 2].piece == null) return true;
             else if ( board.validIndex(startField.x + 2, startField.y - 2) &&
                     board.Fields[startField.x + 1][startField.y + 1].piece != null &&
-                    board.Fields[startField.x + 1][startField.y + 1].piece.color == Color.BLACK &&
+                    board.Fields[startField.x + 1][startField.y + 1].piece.color == Piece_color.BLACK &&
                     board.Fields[startField.x + 2][startField.y + 2].piece == null) return true;
             else return false;
         }
-        else if (startField.piece.color == Color.BLACK)
+        else if (startField.piece.color == Piece_color.BLACK)
         {
             if ( board.validIndex(startField.x - 2, startField.y - 2) &&
                     board.Fields[startField.x - 1][startField.y - 1].piece != null &&
-                    board.Fields[startField.x - 1][startField.y - 1].piece.color == Color.WHITE &&
+                    board.Fields[startField.x - 1][startField.y - 1].piece.color == Piece_color.WHITE &&
                     board.Fields[startField.x - 2][startField.y - 2].piece == null) return true;
             else if ( board.validIndex(startField.x + 2, startField.y - 2) &&
                     board.Fields[startField.x + 1][startField.y - 1].piece != null &&
-                    board.Fields[startField.x + 1][startField.y - 1].piece.color == Color.WHITE &&
+                    board.Fields[startField.x + 1][startField.y - 1].piece.color == Piece_color.WHITE &&
                     board.Fields[startField.x + 2][startField.y - 2].piece == null) return true;
             else return false;
         }
@@ -280,7 +280,7 @@ public class Rules {
         {
             for ( int j = 0 ; j < board.sizeX; j++)
             {
-                if ( board.Fields[j][i].piece != null && board.Fields[j][i].piece.color == Color.WHITE)
+                if ( board.Fields[j][i].piece != null && board.Fields[j][i].piece.color == Piece_color.WHITE)
                 {
                     if (pieceCanMove(board.Fields[j][i], board)) return false;
                 }
@@ -295,7 +295,7 @@ public class Rules {
         {
             for ( int j = 0 ; j < board.sizeX; j++)
             {
-                if ( board.Fields[j][i].piece != null && board.Fields[j][i].piece.color == Color.BLACK)
+                if ( board.Fields[j][i].piece != null && board.Fields[j][i].piece.color == Piece_color.BLACK)
                 {
                     if (pieceCanMove(board.Fields[j][i], board)) return false;
                 }
@@ -312,7 +312,7 @@ public class Rules {
         if (startField.piece.pieceType == PieceType.CHECKER)
         {
             if (CHECKERCanAtack(startField, board)) return true;
-            if (startField.piece.color == Color.WHITE)
+            if (startField.piece.color == Piece_color.WHITE)
             {
                 if (board.validIndex(x + 1, y + 1) &&
                 board.Fields[x + 1][y + 1] == null) return true;

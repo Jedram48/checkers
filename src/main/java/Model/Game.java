@@ -27,6 +27,10 @@ public class Game {
     {
         move(board.Fields[x][y], board.Fields[x2][y2]);
     }
+
+    public boolean isLegal(Field startField, Field endField){
+        return rules.isLegal(board, startField, endField);
+    }
     public void move(Field startField, Field endField)
     {
         if(rules.isLegal(board, startField, endField))
@@ -65,10 +69,10 @@ public class Game {
             board.whiteTurn = !board.whiteTurn;
             if ( endField.y == board.sizeY-1 &&
                     endField.piece.pieceType == PieceType.CHECKER &&
-                    endField.piece.piececolor == Piece_color.WHITE) endField.piece.pieceType = PieceType.KING;
+                    endField.piece.color == Piece_color.WHITE) endField.piece.pieceType = PieceType.KING;
             else if ( endField.y == 0 &&
                     endField.piece.pieceType == PieceType.CHECKER &&
-                    endField.piece.piececolor == Piece_color.BLACK) endField.piece.pieceType = PieceType.KING;
+                    endField.piece.color == Piece_color.BLACK) endField.piece.pieceType = PieceType.KING;
         }
 
         if (rules.didBlackLost(board))
@@ -116,10 +120,14 @@ public class Game {
     public void testPosition()
     {
        // board.Fields[0][0].piece = new Piece(Color.WHITE, PieceType.KING);
-        board.Fields[5][5].piece = new Piece(Color.WHITE, PieceType.CHECKER);
-        board.Fields[6][6].piece = new Piece(Color.BLACK, PieceType.CHECKER);
+        board.Fields[5][5].piece = new Piece(Piece_color.WHITE, PieceType.CHECKER);
+        board.Fields[6][6].piece = new Piece(Piece_color.BLACK, PieceType.CHECKER);
 
         board.whiteTurn = true;
+    }
+
+    public Board getBoard(){
+        return this.board;
     }
 
 

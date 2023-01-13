@@ -31,6 +31,7 @@ public class Field implements Serializable {
     }
 
     public Piece_color getPieceColor(){
-        return this.piece.piececolor;
+        if(this.piece == null){return null;}
+        else{return this.piece.color;}
     }
 }

@@ -1,12 +1,14 @@
 package Model;
 
-public class Piece {
-    Piece_color piececolor;
+import java.io.Serializable;
+
+public class Piece implements Serializable {
+    Piece_color color;
     PieceType pieceType;
 
     public Piece(Piece_color piececolor, PieceType pieceType)
     {
-        this.piececolor = piececolor;
+        this.color = piececolor;
         this.pieceType = pieceType;
     }
 }
