@@ -1,59 +1,58 @@
 package Network;
 
-import Model.Board;
+import Model.Game;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 
 public class Server {
 
     private ServerSocket serverSocket;
     Socket white;
-    ObjectInputStream inW;
-    ObjectOutputStream outW;
+    BufferedReader inW;
+    BufferedWriter outW;
     Socket black;
-    ObjectInputStream inB;
-    ObjectOutputStream outB;
+    BufferedReader inB;
+    BufferedWriter outB;
 
-    private boolean requestedW = true;
-    private boolean requestedB = true;
     public Server(ServerSocket serverSocket) throws IOException
     {
         this.serverSocket = serverSocket;
         System.out.println("Waiting for players to connect...");
         this.white = serverSocket.accept();
-        System.out.println("Player 1 connected");
         this.black = serverSocket.accept();
-        System.out.println("Player 2 connected");
-
-        outW = new ObjectOutputStream(white.getOutputStream());
-        outB = new ObjectOutputStream(black.getOutputStream());
-        inW = new ObjectInputStream(white.getInputStream());
-        inB = new ObjectInputStream(black.getInputStream());
-
-        System.out.println("Connection finished");
+        inW = new BufferedReader(new InputStreamReader(white.getInputStream()));
+        inB = new BufferedReader(new InputStreamReader(black.getInputStream()));
+        outW = new BufferedWriter(new OutputStreamWriter(white.getOutputStream()));
+        outB = new BufferedWriter(new OutputStreamWriter(black.getOutputStream()));
     }
 
-    private void close() throws IOException {
-        this.outW.close();
-        this.outB.close();
-
-        this.inW.close();
-        this.inB.close();
-
-        this.white.close();
-        this.black.close();
-
-        this.serverSocket.close();
-    }
-
-    public void startTheGame()
+    public void startTheGame() throws IOException
     {
-        listenToWhite();
-        listenToBlack();
+        Game game = new Game();
+        String move = "";
+
+        while(game.gameIsOn)
+        {
+            game.displayGameState();
+            if(game.board.whiteTurn) move = inW.readLine();
+            else move = inB.readLine();
+
+            String[] splitMove = move.split(" ");
+            int x = Integer.parseInt(splitMove[0]);
+            int y = Integer.parseInt(splitMove[1]);
+            int x2 = Integer.parseInt(splitMove[2]);
+            int y2 = Integer.parseInt(splitMove[3]);
+
+            if (game.isLegalInString(x, y, x2, y2)) game.moveInString(x, y, x2, y2);
+            else System.out.println("Illegal move");
+        }
+
     }
+
 
     public void listenToWhite()
     {
@@ -64,10 +63,10 @@ public class Server {
                 {
                     while(true)
                     {
-                        if(requestedB) {
-                            broadcastGameState(outW);
-                            requestedB = false;
-                        }
+                        String msg = inW.readLine();
+                        //try to update game using msg from white
+                        //if gamestate updated v
+                        broadcastGameState();
                     }
                 } catch (IOException e)
                 {
@@ -87,10 +86,10 @@ public class Server {
                 {
                     while(true)
                     {
-                        if(requestedW) {
-                            broadcastGameState(outB);
-                            requestedW = false;
-                        }
+                        String msg = inB.readLine();
+                        //try to update game using msg from black
+                        //if gamestate updated v
+                        broadcastGameState();
                     }
                 } catch (IOException e)
                 {
@@ -101,12 +100,18 @@ public class Server {
         }).start();
     }
 
-    public void broadcastGameState(ObjectOutputStream out) throws IOException
+    public void broadcastGameState() throws IOException
     {
-        Board board = new Board(8,8, true);
-        out.writeObject(board);
-    }
+        //getGameState()
 
+        outW.write("~~Gamestate~~");
+        outW.newLine();
+        outW.flush();
+
+        outB.write("~~Gamestate~~");
+        outB.newLine();
+        outB.flush();
+    }
 
 
     public static void main(String[] args) throws IOException
@@ -117,7 +122,3 @@ public class Server {
 
     }
 }
-
-
-//Board b = new Board(8,8, true);
-//this.outW.writeObject(b);

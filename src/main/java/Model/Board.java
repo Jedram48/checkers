@@ -1,13 +1,13 @@
 package Model;
 
-import java.io.Serializable;
+public class Board {
 
-public class Board implements Serializable {
     Field[][] Fields;
     int sizeX;
     int sizeY;
     boolean A1isWhite;
-    boolean whiteTurn;
+    public boolean whiteTurn;
+    boolean gameIsOn;
 
 
     public Board(int sizeX, int sizeY, boolean A1isWhite)
@@ -17,19 +17,9 @@ public class Board implements Serializable {
         this.sizeY = sizeY;
         this.A1isWhite = A1isWhite;
         giveColorsToFields(A1isWhite);
+        gameIsOn = true;
     }
 
-    public void displayBoardColors()
-    {
-        for(int i = sizeY -1 ; i >= 0; i--)
-        {
-            for(int j = 0; j < sizeX; j++)
-            {
-                System.out.print(Fields[j][i].color + " ");
-            }
-            System.out.println();
-        }
-    }
 
     public void displayGamestate()
     {
@@ -38,12 +28,24 @@ public class Board implements Serializable {
             for(int j = 0; j < sizeX; j++)
             {
                 if (Fields[j][i].piece == null) System.out.print("0 ");
-                else if ( Fields[j][i].piece.piececolor == Piece_color.WHITE) System.out.print("1 ");
-                else if ( Fields[j][i].piece.piececolor == Piece_color.BLACK) System.out.print("2 ");
-
+                else if (Fields[j][i].piece.color == Color.WHITE)
+                {
+                    if (Fields[j][i].piece.pieceType == PieceType.CHECKER)
+                        System.out.print("1 ");
+                    else
+                        System.out.print("3 ");
+                }
+                else
+                {
+                    if (Fields[j][i].piece.pieceType == PieceType.CHECKER)
+                        System.out.print("2 ");
+                    else
+                        System.out.print("4 ");
+                }
             }
             System.out.println();
         }
+        System.out.println("White turn: " + whiteTurn);
     }
 
     public void giveColorsToFields(boolean A1isWhite)
@@ -54,8 +56,8 @@ public class Board implements Serializable {
             {
                 for ( int j = 0 ; j < sizeX; j++)
                 {
-                    if ((i+j)%2 == 0) Fields[j][i] = new Field(Piece_color.WHITE,j , i);
-                    else Fields[j][i] = new Field(Piece_color.BLACK, j, i);
+                    if ((i+j)%2 == 0) Fields[j][i] = new Field(Color.WHITE,j , i);
+                    else Fields[j][i] = new Field(Color.BLACK, j, i);
                 }
             }
         }
@@ -65,8 +67,8 @@ public class Board implements Serializable {
             {
                 for ( int j = 0 ; j < sizeX; j++)
                 {
-                    if ((i+j)%2 == 0) Fields[j][i] = new Field(Piece_color.BLACK, j, i);
-                    else Fields[j][i] = new Field(Piece_color.WHITE, j, i);
+                    if ((i+j)%2 == 0) Fields[j][i] = new Field(Color.BLACK, j, i);
+                    else Fields[j][i] = new Field(Color.WHITE, j, i);
                 }
             }
         }
@@ -84,15 +86,5 @@ public class Board implements Serializable {
         else return Math.abs(startField.x - endField.x);
     }
 
-    public int getSizeX(){
-        return this.sizeX;
-    }
 
-    public int getSizeY(){
-        return this.sizeY;
-    }
-
-    public Field[][] getFields(){
-        return this.Fields;
-    }
 }

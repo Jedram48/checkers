@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="test server">
+    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Piece_color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Field.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Rules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Rules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/TestingBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/TestingBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Play_board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Checkers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Checkers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Black_square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +20,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -112,7 +104,7 @@
       <recent name="Model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Checkers">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Checkers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Widok.Checkers" />
       <module name="Checkers" />
@@ -139,19 +131,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Client2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Network.Client2" />
-      <module name="Checkers" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Network.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Network.Server" />
       <module name="Checkers" />
@@ -165,12 +144,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="clnt" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Network.clnt" />
+    <configuration name="TestingBoard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Model.TestingBoard" />
       <module name="Checkers" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Network.*" />
+          <option name="PATTERN" value="Model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -178,34 +157,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="srv" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Network.srv" />
+    <configuration name="BoardTest.simpleBoardTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Checkers" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Network.*" />
+          <option name="PATTERN" value="Model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.BoardTest" />
+      <option name="METHOD_NAME" value="simpleBoardTests" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardTest.testingA1isWhite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Checkers" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Model" />
+      <option name="MAIN_CLASS_NAME" value="Model.BoardTest" />
+      <option name="METHOD_NAME" value="testingA1isWhite" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Application.Client" />
+      <item itemvalue="Application.TestingBoard" />
       <item itemvalue="Application.Checkers" />
-      <item itemvalue="Application.Client2" />
-      <item itemvalue="Application.clnt" />
-      <item itemvalue="Application.srv" />
       <item itemvalue="Application.Server" />
+      <item itemvalue="JUnit.BoardTest.simpleBoardTests" />
+      <item itemvalue="JUnit.BoardTest.testingA1isWhite" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Checkers" />
-        <item itemvalue="Application.Client2" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.clnt" />
-        <item itemvalue="Application.srv" />
+        <item itemvalue="Application.TestingBoard" />
+        <item itemvalue="JUnit.BoardTest.simpleBoardTests" />
+        <item itemvalue="JUnit.BoardTest.testingA1isWhite" />
+        <item itemvalue="Application.Checkers" />
       </list>
     </recent_temporary>
   </component>
@@ -231,8 +229,14 @@
       <workItem from="1673009203678" duration="1225000" />
       <workItem from="1673267875475" duration="14158000" />
       <workItem from="1673390850800" duration="10000" />
-      <workItem from="1673423726968" duration="22749000" />
-      <workItem from="1673570491756" duration="2458000" />
+      <workItem from="1673423726968" duration="22996000" />
+      <workItem from="1673460294829" duration="32000" />
+      <workItem from="1673511613037" duration="4584000" />
+      <workItem from="1673519804742" duration="3458000" />
+      <workItem from="1673531848274" duration="599000" />
+      <workItem from="1673534813675" duration="7558000" />
+      <workItem from="1673565677592" duration="6531000" />
+      <workItem from="1673601087236" duration="6833000" />
     </task>
     <task id="LOCAL-00001" summary="Initial version">
       <created>1671564315944</created>
@@ -311,7 +315,49 @@
       <option name="project" value="LOCAL" />
       <updated>1673382196121</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Skipping works">
+      <created>1673460203063</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1673460203063</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Skipping works">
+      <created>1673516479197</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1673516479197</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Skipping includes players turn">
+      <created>1673522714077</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1673522714077</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Simple board tests">
+      <created>1673562556776</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1673562556776</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Checking if the game is over works !">
+      <created>1673572214961</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1673572214961</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Whole game is playable !">
+      <created>1673606927421</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1673606927421</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +396,12 @@
     <MESSAGE value="Board and moving is finished" />
     <MESSAGE value="test" />
     <MESSAGE value="network works!" />
-    <option name="LAST_COMMIT_MESSAGE" value="network works!" />
+    <MESSAGE value="Skipping works" />
+    <MESSAGE value="Skipping includes players turn" />
+    <MESSAGE value="Simple board tests" />
+    <MESSAGE value="Checking if the game is over works !" />
+    <MESSAGE value="Whole game is playable !" />
+    <option name="LAST_COMMIT_MESSAGE" value="Whole game is playable !" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
