@@ -6,7 +6,7 @@ public class Board {
     int sizeX;
     int sizeY;
     boolean A1isWhite;
-    boolean whiteTurn;
+    public boolean whiteTurn;
     boolean gameIsOn;
 
 
@@ -45,6 +45,7 @@ public class Board {
             }
             System.out.println();
         }
+        System.out.println("White turn: " + whiteTurn);
     }
 
     public void giveColorsToFields(boolean A1isWhite)

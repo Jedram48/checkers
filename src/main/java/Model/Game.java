@@ -2,19 +2,31 @@ package Model;
 
 public class Game {
 
-    Board board;
-    boolean gameIsOn;
-    Rules rules;
+    public Board board;
+    public boolean gameIsOn;
+    public Rules rules;
 
     public Game()
     {
         this.rules = new Rules();
         this.board = new Board(8,8,true);
         this.gameIsOn = true;
-        testPosition();
+        startingPosition();
+    }
+    public void displayGameState()
+    {
+        board.displayGamestate();
     }
 
+    public boolean isLegalInString(int x, int y, int x2, int y2)
+    {
+        return rules.isLegal(board, board.Fields[x][y], board.Fields[x2][y2]);
+    }
 
+    public void moveInString(int x, int y, int x2, int y2)
+    {
+        move(board.Fields[x][y], board.Fields[x2][y2]);
+    }
     public void move(Field startField, Field endField)
     {
         if(rules.isLegal(board, startField, endField))

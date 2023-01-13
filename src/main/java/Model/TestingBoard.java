@@ -23,7 +23,6 @@ public class TestingBoard {
             int y2 = Integer.parseInt(splitMove[3]);
 
             game.move(game.board.Fields[x][y], game.board.Fields[x2][y2]);
-
         }
 
 

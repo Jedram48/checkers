@@ -1,8 +1,11 @@
 package Network;
 
+import Model.Game;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 
 public class Server {
@@ -27,11 +30,29 @@ public class Server {
         outB = new BufferedWriter(new OutputStreamWriter(black.getOutputStream()));
     }
 
-    public void startTheGame()
+    public void startTheGame() throws IOException
     {
-        listenToWhite();
-        listenToBlack();
+        Game game = new Game();
+        String move = "";
+
+        while(game.gameIsOn)
+        {
+            game.displayGameState();
+            if(game.board.whiteTurn) move = inW.readLine();
+            else move = inB.readLine();
+
+            String[] splitMove = move.split(" ");
+            int x = Integer.parseInt(splitMove[0]);
+            int y = Integer.parseInt(splitMove[1]);
+            int x2 = Integer.parseInt(splitMove[2]);
+            int y2 = Integer.parseInt(splitMove[3]);
+
+            if (game.isLegalInString(x, y, x2, y2)) game.moveInString(x, y, x2, y2);
+            else System.out.println("Illegal move");
+        }
+
     }
+
 
     public void listenToWhite()
     {
