@@ -225,6 +225,53 @@ public class Rules {
         return enemyPiecesFound;
     }
 
+    public Field getFieldOfEnemyPieceOnPath(Field startField, Field endField, Board board)
+    {
+        if (startField == endField) return null;
+        int Xincrementer;
+        int Yincrementer;
+
+        if (startField.x > endField.x)
+        {
+            if (startField.y > endField.y)
+            {
+                Xincrementer = -1;
+                Yincrementer = -1;
+            }
+            else
+            {
+                Xincrementer = -1;
+                Yincrementer = 1;
+            }
+        }
+        else
+        {
+            if (startField.y > endField.y)
+            {
+                Xincrementer = 1;
+                Yincrementer = -1;
+            }
+            else
+            {
+                Xincrementer = 1;
+                Yincrementer = 1;
+            }
+        }
+
+        int x = startField.x + Xincrementer;
+        int y = startField.y + Yincrementer;
+
+        while(x != endField.x && y != endField.y)
+        {
+            if(board.Fields[x][y].piece != null && board.Fields[x][y].piece.color == startField.piece.color) return null;
+            if(board.Fields[x][y].piece != null && board.Fields[x][y].piece.color != startField.piece.color)
+                return board.Fields[x][y];
+            x = x + Xincrementer;
+            y = y + Yincrementer;
+        }
+        return null;
+    }
+
 
 
     public boolean didWhiteLost(Board board)

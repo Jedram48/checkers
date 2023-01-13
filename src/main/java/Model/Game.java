@@ -23,9 +23,12 @@ public class Game {
             {
                 endField.piece = startField.piece;
                 startField.piece = null;
+                board.whiteTurn = !board.whiteTurn;
+                return;
 
             }
-            else if (board.distance(startField, endField) == 2)
+            else if (startField.piece.pieceType == PieceType.CHECKER &&
+                    board.distance(startField, endField) == 2 )
             {
                 endField.piece = startField.piece;
                 startField.piece = null;
@@ -33,9 +36,19 @@ public class Game {
                 int middleFieldY = (startField.y - endField.y)/2 + endField.y;
                 board.Fields[middleFieldX][middleFieldY].piece = null;
             }
+            else if (startField.piece.pieceType == PieceType.KING)
+            {
+                endField.piece = startField.piece;
+                rules.getFieldOfEnemyPieceOnPath(startField,endField,board).piece = null;
+            }
+        }
+        else
+        {
+            System.out.println("BAD MOVE");
+            return;
         }
 
-        if (!rules.CHECKERCanAtack(endField, board))
+        if (!rules.CHECKERCanAtack(endField, board) && !rules.KINGcanAttack(endField, board))
         {
             board.whiteTurn = !board.whiteTurn;
             if ( endField.y == board.sizeY-1 &&
@@ -44,6 +57,17 @@ public class Game {
             else if ( endField.y == 0 &&
                     endField.piece.pieceType == PieceType.CHECKER &&
                     endField.piece.color == Color.BLACK) endField.piece.pieceType = PieceType.KING;
+        }
+
+        if (rules.didBlackLost(board))
+        {
+            gameIsOn = false;
+            System.out.println("WHITE WIN!");
+        }
+        else if (rules.didWhiteLost(board))
+        {
+            gameIsOn = false;
+            System.out.println("BLACK WIN!");
         }
 
     }
@@ -79,12 +103,10 @@ public class Game {
 
     public void testPosition()
     {
-        board.Fields[0][0].piece = new Piece(Color.WHITE, PieceType.KING);
-        board.Fields[1][1].piece = new Piece(Color.BLACK, PieceType.CHECKER);
-        board.Fields[2][0].piece = new Piece(Color.WHITE, PieceType.CHECKER);
-        board.Fields[2][2].piece = new Piece(Color.BLACK, PieceType.CHECKER);
-        board.Fields[3][1].piece = new Piece(Color.WHITE, PieceType.CHECKER);
-        board.Fields[4][0].piece = new Piece(Color.WHITE, PieceType.CHECKER);
+       // board.Fields[0][0].piece = new Piece(Color.WHITE, PieceType.KING);
+        board.Fields[5][5].piece = new Piece(Color.WHITE, PieceType.CHECKER);
+        board.Fields[6][6].piece = new Piece(Color.BLACK, PieceType.CHECKER);
+
         board.whiteTurn = true;
     }
 

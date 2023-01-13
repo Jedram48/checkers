@@ -1,12 +1,31 @@
 package Model;
 
+import java.util.Scanner;
+
 public class TestingBoard {
     public static void main(String[] args)
     {
         Game game = new Game();
-        game.board.displayGamestate();
-        System.out.println("Did black lost: " + game.rules.didBlackLost(game.board));
-        System.out.println("Did white lost: " + game.rules.didWhiteLost(game.board));
+
+        while(game.gameIsOn)
+        {
+            game.board.displayGamestate();
+            System.out.println("WhiteTurn: " + game.board.whiteTurn);
+            Scanner scanner = new Scanner(System.in);
+            String move = scanner.nextLine();
+            if(move.equals("exit")) break;
+
+            String[] splitMove = move.split(" ");
+
+            int x = Integer.parseInt(splitMove[0]);
+            int y = Integer.parseInt(splitMove[1]);
+            int x2 = Integer.parseInt(splitMove[2]);
+            int y2 = Integer.parseInt(splitMove[3]);
+
+            game.move(game.board.Fields[x][y], game.board.Fields[x2][y2]);
+
+        }
+
 
         /*Field startField = game.board.Fields[5][2];
         Field endField = game.board.Fields[4][3];
