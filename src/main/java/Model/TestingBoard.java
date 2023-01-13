@@ -5,7 +5,8 @@ public class TestingBoard {
     {
         Game game = new Game();
         game.board.displayGamestate();
-        System.out.println(game.rules.KINGcanAtack(game.board.Fields[0][0], game.board));
+        System.out.println("Did black lost: " + game.rules.didBlackLost(game.board));
+        System.out.println("Did white lost: " + game.rules.didWhiteLost(game.board));
 
         /*Field startField = game.board.Fields[5][2];
         Field endField = game.board.Fields[4][3];

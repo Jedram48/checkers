@@ -80,7 +80,11 @@ public class Game {
     public void testPosition()
     {
         board.Fields[0][0].piece = new Piece(Color.WHITE, PieceType.KING);
-        board.Fields[6][6].piece = new Piece(Color.BLACK, PieceType.CHECKER);
+        board.Fields[1][1].piece = new Piece(Color.BLACK, PieceType.CHECKER);
+        board.Fields[2][0].piece = new Piece(Color.WHITE, PieceType.CHECKER);
+        board.Fields[2][2].piece = new Piece(Color.BLACK, PieceType.CHECKER);
+        board.Fields[3][1].piece = new Piece(Color.WHITE, PieceType.CHECKER);
+        board.Fields[4][0].piece = new Piece(Color.WHITE, PieceType.CHECKER);
         board.whiteTurn = true;
     }
 

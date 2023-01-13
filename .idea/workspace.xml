@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Model/BoardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Rules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Rules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/TestingBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/TestingBoard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +104,7 @@
       <recent name="Model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BoardTest.simpleBoardTests">
+  <component name="RunManager" selected="Application.TestingBoard">
     <configuration name="Checkers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Widok.Checkers" />
       <module name="Checkers" />
@@ -196,9 +199,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestingBoard" />
         <item itemvalue="JUnit.BoardTest.simpleBoardTests" />
         <item itemvalue="JUnit.BoardTest.testingA1isWhite" />
-        <item itemvalue="Application.TestingBoard" />
         <item itemvalue="Application.Checkers" />
         <item itemvalue="Application.Server" />
       </list>
@@ -231,7 +234,8 @@
       <workItem from="1673511613037" duration="4584000" />
       <workItem from="1673519804742" duration="3458000" />
       <workItem from="1673531848274" duration="599000" />
-      <workItem from="1673534813675" duration="4439000" />
+      <workItem from="1673534813675" duration="7558000" />
+      <workItem from="1673565677592" duration="6144000" />
     </task>
     <task id="LOCAL-00001" summary="Initial version">
       <created>1671564315944</created>
@@ -331,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673522714077</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Simple board tests">
+      <created>1673562556776</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1673562556776</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,7 +383,8 @@
     <MESSAGE value="network works!" />
     <MESSAGE value="Skipping works" />
     <MESSAGE value="Skipping includes players turn" />
-    <option name="LAST_COMMIT_MESSAGE" value="Skipping includes players turn" />
+    <MESSAGE value="Simple board tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simple board tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

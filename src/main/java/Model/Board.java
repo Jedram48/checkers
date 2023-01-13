@@ -1,11 +1,13 @@
 package Model;
 
 public class Board {
+
     Field[][] Fields;
     int sizeX;
     int sizeY;
     boolean A1isWhite;
     boolean whiteTurn;
+    boolean gameIsOn;
 
 
     public Board(int sizeX, int sizeY, boolean A1isWhite)
@@ -15,19 +17,9 @@ public class Board {
         this.sizeY = sizeY;
         this.A1isWhite = A1isWhite;
         giveColorsToFields(A1isWhite);
+        gameIsOn = true;
     }
 
-    public void displayBoardColors()
-    {
-        for(int i = sizeY -1 ; i >= 0; i--)
-        {
-            for(int j = 0; j < sizeX; j++)
-            {
-                System.out.print(Fields[j][i].color + " ");
-            }
-            System.out.println();
-        }
-    }
 
     public void displayGamestate()
     {
@@ -36,9 +28,20 @@ public class Board {
             for(int j = 0; j < sizeX; j++)
             {
                 if (Fields[j][i].piece == null) System.out.print("0 ");
-                else if ( Fields[j][i].piece.color == Color.WHITE) System.out.print("1 ");
-                else if ( Fields[j][i].piece.color == Color.BLACK) System.out.print("2 ");
-
+                else if (Fields[j][i].piece.color == Color.WHITE)
+                {
+                    if (Fields[j][i].piece.pieceType == PieceType.CHECKER)
+                        System.out.print("1 ");
+                    else
+                        System.out.print("3 ");
+                }
+                else
+                {
+                    if (Fields[j][i].piece.pieceType == PieceType.CHECKER)
+                        System.out.print("2 ");
+                    else
+                        System.out.print("4 ");
+                }
             }
             System.out.println();
         }
@@ -81,4 +84,6 @@ public class Board {
         if(Math.abs(startField.x - endField.x) != Math.abs(startField.y - endField.y)) return -1;
         else return Math.abs(startField.x - endField.x);
     }
+
+
 }
