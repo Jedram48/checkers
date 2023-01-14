@@ -1,11 +1,17 @@
 package Model;
 
+/**
+ * Klasa game laczy metody klasy rules z klasa Board
+ */
 public class Game {
 
     public Board board;
     public boolean gameIsOn;
     public Rules rules;
 
+    /**
+     * Klasa rules uwzglednia zasady gry i pozwala na wykonywanie okreslonych ruchow.
+     */
     public Game()
     {
         this.rules = new Rules();
@@ -19,11 +25,17 @@ public class Game {
     }
 
     public boolean isLegalInString(int x, int y, int x2, int y2)
+    /**
+     * Wykonuje metode isLegal() z klasy rules, przekazujac odpowiednie liczby x,y,x2,y2 jako wspolrzedne pol.
+     */
     {
         return rules.isLegal(board, board.Fields[x][y], board.Fields[x2][y2]);
     }
 
     public void moveInString(int x, int y, int x2, int y2)
+    /**
+     * Wykonuje metode move(), przekazujac odpowiednie liczby x,y,x2,x2 jako wspolrzedne pol.
+     */
     {
         move(board.Fields[x][y], board.Fields[x2][y2]);
     }
@@ -32,6 +44,13 @@ public class Game {
         return rules.isLegal(board, startField, endField);
     }
     public void move(Field startField, Field endField)
+    /**
+     * Sprawdza czy ruch z pola startField na pole endField jest zgodny z zasadami.
+     * Jesli tak - wykonuje ruch zmieniajac stany poszczegolnych pol.
+     * Jesli nie - wyswietla komunikat "BAD MOVE"
+     * Jesli po wykonaniu ruchu nie ma kolejnej mozliwosci zbicia to zmienia wartosc zmiennej whiteTurn
+     * Jesli metoda rules.didWhiteLost(Board board) lub rules.didBlackLost(Board board) zwroci true to parametr gameIsOn zmienia wartosc na false
+     */
     {
         if(rules.isLegal(board, startField, endField))
         {
@@ -89,6 +108,9 @@ public class Game {
     }
 
     public void startingPosition()
+    /**
+     * ustawia pionki na szachownicy w pozycji startowej
+     */
     {
         for(int i = board.sizeY - 3; i < board.sizeY; i++)
         {

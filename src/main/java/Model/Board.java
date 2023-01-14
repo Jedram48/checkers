@@ -2,7 +2,18 @@ package Model;
 
 import java.io.Serializable;
 
+/**
+ * Klasa Board reprezentuje aktualny stan gry.
+ */
 public class Board implements Serializable {
+    /**
+     *
+     * @param sizeX szerokosc planszy
+     * @param sizeY wysokosc planszy
+     * @param A1isWhite jesli = true to uklad przekatnych bedzie taki, ze pole w lewym dolnym rogu pole jest biale.
+     *                  jesli = false to uklad przekatnych bedzie taki, ze pole w lewym dolnym rogu pole jest czarne.
+     * @param gameIsOn informuje o stanie gry.
+     */
 
     Field[][] Fields;
     int sizeX;
@@ -77,12 +88,18 @@ public class Board implements Serializable {
     }
 
     public boolean validIndex(int x, int y)
+    /**
+     * sprawdza czy na planszy istnieje pole o wspolrzednych x i y
+     */
     {
         if (x < 0 || x >= sizeX || y < 0 || y >= sizeY) return false;
         else return true;
     }
 
     public int distance(Field startField, Field endField)
+    /**
+     * zwraca ilosc pol pomiedzy dwoma polami na przekatnej
+     */
     {
         if(Math.abs(startField.x - endField.x) != Math.abs(startField.y - endField.y)) return -1;
         else return Math.abs(startField.x - endField.x);

@@ -3,6 +3,10 @@ package Model;
 import java.io.Serializable;
 
 public class Field implements Serializable {
+    /**
+     * zmienna piece informuje o tym jaka fogura stoi na polu ( jesli piece == null to pole jest puste)
+     * x i y to wspolrzedne pola
+     */
     Piece piece;
     Piece_color color;
 
