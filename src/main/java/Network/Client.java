@@ -1,45 +1,69 @@
 package Network;
 
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
 public class Client {
-    public static void main(String[] args) throws IOException
+    private Socket socket;
+    private BufferedReader in;
+    private BufferedWriter out;
+
+    public Client(Socket socket) throws IOException
     {
-        boolean myMove = true;
-        Scanner scan = new Scanner(System.in);
-        Socket socket = new Socket("localhost", 4444);
-        PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
-        BufferedReader input = new BufferedReader(new InputStreamReader( socket.getInputStream() ));
+        this.socket = socket;
+        this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        this.out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+    }
 
-        if(input.readLine().equals("You are playing Black!")) myMove = false ;
-
-        while (true)
+    public void sendMoves() throws IOException
+    {
+        try
         {
-            System.out.println(input.readLine());
-
-            if(myMove)
+            while(socket.isConnected())
             {
-                String move = scan.nextLine();
-                if(move.equals("end")) break;
-                out.println(move);
+                Scanner scanner = new Scanner(System.in);
+                String msgToSend = scanner.nextLine(); //sending moves
+                out.write(msgToSend);
+                out.newLine();
+                out.flush();
             }
-            else
-            {
-                System.out.println(input.readLine());
-            }
-            myMove = !myMove;
+        } catch (IOException e)
+        {
+            System.err.println("Problem with sending moves...");
 
         }
-
-        input.close();
-        out.close();
-        socket.close();
-        System.exit(0);
     }
+
+    public void listenToServer()
+    {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try
+                {
+                    while(true)
+                    {
+                        String msg = in.readLine();
+                        System.out.println("~~Gamestate from server~~");
+                    }
+                } catch (IOException e)
+                {
+                    System.err.println("Problem with White's connection...");
+                }
+
+            }
+        }).start();
+    }
+
+    public static void main(String[] args) throws IOException {
+        Socket socket = new Socket("localhost", 1234);
+        Client client = new Client(socket);
+        client.listenToServer();
+        client.sendMoves();
+
+    }
+
+
 }
