@@ -6,16 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="test server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Rules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Rules.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Checkers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Checkers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Black_square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Black_square.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Play_board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Play_board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Model/BoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +83,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/Database&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -110,8 +106,8 @@
       <recent name="Model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client2">
-    <configuration name="Checkers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Checkers">
+    <configuration name="Checkers" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Widok.Checkers" />
       <module name="Checkers" />
       <extension name="coverage">
@@ -202,9 +198,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client2" />
         <item itemvalue="Application.Checkers" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client2" />
         <item itemvalue="Application.TestingBoard" />
         <item itemvalue="JUnit.BoardTest.simpleBoardTests" />
       </list>
@@ -240,7 +236,11 @@
       <workItem from="1673534813675" duration="7558000" />
       <workItem from="1673565677592" duration="6531000" />
       <workItem from="1673601087236" duration="6833000" />
-      <workItem from="1673619678786" duration="11911000" />
+      <workItem from="1673619678786" duration="12617000" />
+      <workItem from="1673730419391" duration="815000" />
+      <workItem from="1673831845252" duration="13000" />
+      <workItem from="1674052542246" duration="5566000" />
+      <workItem from="1674070664826" duration="4974000" />
     </task>
     <task id="LOCAL-00001" summary="Initial version">
       <created>1671564315944</created>
@@ -361,7 +361,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673606927421</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="test server">
+      <created>1673641408287</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1673641408287</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,7 +412,8 @@
     <MESSAGE value="Simple board tests" />
     <MESSAGE value="Checking if the game is over works !" />
     <MESSAGE value="Whole game is playable !" />
-    <option name="LAST_COMMIT_MESSAGE" value="Whole game is playable !" />
+    <MESSAGE value="test server" />
+    <option name="LAST_COMMIT_MESSAGE" value="test server" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

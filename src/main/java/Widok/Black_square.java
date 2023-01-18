@@ -1,5 +1,6 @@
 package Widok;
 
+import Model.Piece_color;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -14,6 +15,7 @@ public class Black_square extends StackPane {
     private final Rectangle rect = new Rectangle(size,size,Color.BLACK);
     private Circle circle;
     boolean occupied = false;
+    private Piece_color color;
 
     Black_square(int x, int y){
         super();
@@ -21,7 +23,7 @@ public class Black_square extends StackPane {
         this.col = y;
         this.getChildren().add(rect);
     }
-    Black_square(int x, int y, Color color){
+    Black_square(int x, int y, Piece_color color){
         super();
         this.row = x;
         this.col = y;
@@ -46,19 +48,36 @@ public class Black_square extends StackPane {
     Color getColor(){
         return (Color) this.circle.getFill();
     }
+    Piece_color getPieceColor(){
+        return this.color;
+    }
 
-    public void setCircle(Color color){
-        this.circle = new Circle((int)(size / 2) - 5, color);
+    public void setCircle(Piece_color pieceColor){
+        Color color = null;
 
-        if(color == Color.WHITE){this.circle.setStroke(Color.BLACK);}
-        else if(color == Color.BLACK){this.circle.setStroke(Color.WHITE);}
+        if(pieceColor == Piece_color.BLACK)color = Color.BLACK;
+        else if(pieceColor == Piece_color.WHITE)color = Color.WHITE;
 
-        this.getChildren().add(this.circle);
+        if(color!=null){
+            this.circle = new Circle((int)(size / 2) - 5, color);
+
+            if(color == Color.WHITE){this.circle.setStroke(Color.BLACK);}
+            else if(color == Color.BLACK){this.circle.setStroke(Color.WHITE);}
+            else{removeCircle();}
+
+            this.getChildren().add(this.circle);
+        }
+        else{removeCircle();}
+
+        this.color = pieceColor;
+
     }
 
     public void removeCircle(){
-        this.getChildren().remove(this.circle);
-        this.circle = null;
+        if(this.circle!=null){
+            this.getChildren().remove(this.circle);
+            this.circle = null;
+        }
     }
 
     public void switchOccupation(){

@@ -12,6 +12,7 @@ public class Client {
     private Socket socket;
     private ObjectInputStream in;
     private ObjectOutputStream out;
+    private boolean turn;
 
     public Client() throws IOException
     {
@@ -41,18 +42,20 @@ public class Client {
     public boolean isValid() throws IOException, ClassNotFoundException {
         return (boolean) in.readObject();
     }
-/*
-    public void listenToServer()
+
+
+    public Board getNewGameState()
     {
+        final Board[] board = new Board[1];
         new Thread(new Runnable() {
             @Override
             public void run() {
                 while(true)
                 {
                     try {
-                        Board board = (Board) in.readObject();
-                        Board b = new Game().getBoard();
-                        Window window = new Window(b);
+                        board[0] = (Board) in.readObject();
+                        break;
+
                     } catch (IOException | ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     }
@@ -60,8 +63,9 @@ public class Client {
 
             }
         }).start();
+        return board[0];
     }
-*/
+
 
 
 }

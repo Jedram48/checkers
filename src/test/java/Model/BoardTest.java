@@ -11,12 +11,12 @@ class BoardTest {
         Board board = new Board(5, 4, true);
         assertEquals(4, board.sizeY);
         assertEquals(5, board.sizeX);
-        assertEquals(Color.WHITE, board.Fields[0][0].color);
-        assertEquals(Color.BLACK, board.Fields[4][3].color);
+        assertEquals(Piece_color.WHITE, board.Fields[0][0].color);
+        assertEquals(Piece_color.BLACK, board.Fields[4][3].color);
 
         Board board2 = new Board(5, 4, false);
-        assertEquals(Color.BLACK, board2.Fields[0][0].color);
-        assertEquals(Color.WHITE, board2.Fields[4][3].color);
+        assertEquals(Piece_color.BLACK, board2.Fields[0][0].color);
+        assertEquals(Piece_color.WHITE, board2.Fields[4][3].color);
     }
 
 }
