@@ -44,6 +44,7 @@ public class Play_board extends Thread{
             try {
                 this.board = this.connection.loadBoard();
                 refreshBoard();
+                board.displayGamestate();
             } catch (IOException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
@@ -63,7 +64,7 @@ public class Play_board extends Thread{
                     fields[1] = this.board.getFields()[blacksquare.row][blacksquare.col];
                     try {
                         this.connection.sendMoves(fields);
-                        System.out.println("done");
+                        System.out.println(fields[0].getX() + " " + fields[0].getY() + " " + fields[1].getX() + " " + fields[1].getY());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

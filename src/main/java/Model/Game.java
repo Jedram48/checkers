@@ -43,6 +43,9 @@ public class Game {
     public boolean isLegal(Field startField, Field endField){
         return rules.isLegal(board, startField, endField);
     }
+    public boolean canContinue(int x, int y){
+        return rules.canAttack(board.Fields[x][y], board);
+    }
     public void move(Field startField, Field endField)
     /**
      * Sprawdza czy ruch z pola startField na pole endField jest zgodny z zasadami.

@@ -6,10 +6,21 @@ public class TestingBoard {
     public static void main(String[] args)
     {
         Game game = new Game();
+        game.board.displayGamestate();
+        game.moveInString(3,2,4,3);
+        game.board.displayGamestate();
+        game.moveInString(4,5,5,4);
+        game.board.displayGamestate();
+        game.moveInString(4,3,3,4);
+        game.board.displayGamestate();
 
+
+        /*
         while(game.gameIsOn)
         {
             game.board.displayGamestate();
+
+
             System.out.println("WhiteTurn: " + game.board.whiteTurn);
             Scanner scanner = new Scanner(System.in);
             String move = scanner.nextLine();
@@ -24,6 +35,7 @@ public class TestingBoard {
 
             game.move(game.board.Fields[x][y], game.board.Fields[x2][y2]);
         }
+         */
 
 
         /*Field startField = game.board.Fields[5][2];

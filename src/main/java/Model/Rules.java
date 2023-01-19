@@ -104,6 +104,12 @@ public class Rules {
         return false;
     }
 
+    public boolean canAttack(Field startField, Board board){
+        if(startField.piece.pieceType == PieceType.CHECKER)return CHECKERCanAtack(startField, board);
+        else if(startField.piece.pieceType == PieceType.KING)return  KINGcanAttack(startField, board);
+        else return false;
+    }
+
     public boolean KINGcanAttackinOneOfDiagonals(Field startField, Board board, int diagonalNumber)
     {
         int x = -1;

@@ -93,18 +93,18 @@ public class Server {
                     while(true)
                     {
                         Field[] fields = (Field[]) inW.readObject();
-
+                        System.out.println(fields[0].getX() + " " + fields[0].getY() + " " + fields[1].getX() + " " + fields[1].getY());
 
                         if(whiteTurn){
+                            System.out.println("check");
                             if(game.isLegal(fields[0], fields[1])){
+                                System.out.println("making move");
                                 game.moveInString(fields[0].getX(), fields[0].getY(), fields[1].getX(), fields[1].getY());
                                 game.displayGameState();
+                                whiteTurn = game.getBoard().whiteTurn;
                             }
-
-                            broadcastGameState();
-
-                            whiteTurn = !whiteTurn;
                         }
+                        broadcastGameState();
                     }
                 } catch (IOException e)
                 {
@@ -126,21 +126,19 @@ public class Server {
                 {
                     while(true)
                     {
-
-
                         Field[] fields = (Field[]) inB.readObject();
-
+                        System.out.println(fields[0].getX() + " " + fields[0].getY() + " " + fields[1].getX() + " " + fields[1].getY());
 
                         if(!whiteTurn){
+                            System.out.println("check");
                             if(game.isLegal(fields[0], fields[1])){
+                                System.out.println("making move");
                                 game.moveInString(fields[0].getX(), fields[0].getY(), fields[1].getX(), fields[1].getY());
                                 game.displayGameState();
+                                whiteTurn = game.getBoard().whiteTurn;
                             }
-
-                            broadcastGameState();
-
-                            whiteTurn = !whiteTurn;
                         }
+                        broadcastGameState();
                     }
                 } catch (IOException e)
                 {
@@ -175,7 +173,3 @@ public class Server {
 
     }
 }
-
-
-//Board b = new Board(8,8, true);
-//this.outW.writeObject(b);

@@ -88,28 +88,7 @@ public class Black_square extends StackPane {
     public boolean isOccupied(){
         return occupied;
     }
-/*
-    public void handle(boolean[][] isOccupied) {
-        setOnMouseClicked(event -> {
-            if (circle != null) {
-                // If the square has a circle, select it
-                selectedSquare = this;
-            } else if (selectedSquare != null) {
-                // If a square is already selected, try to move its circle to this square
-                if (!isOccupied[row][col]) {
-                    // Remove the circle from the selected square and add it to this square
-                    setCircle(selectedSquare.getColor());
-                    selectedSquare.removeCircle();
-                    // Update the isOccupied array
-                    isOccupied[selectedSquare.row][selectedSquare.col] = false;
-                    isOccupied[row][col] = true;
-                    // Deselect the selected square
-                    selectedSquare = null;
-                }
-            }
-        });
-    }
-*/
+
 
 
 }
