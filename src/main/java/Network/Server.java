@@ -22,7 +22,6 @@ public class Server {
     private boolean requestedW = true;
     private boolean requestedB = true;
     private Game game;
-
     private boolean whiteTurn;
 
     public Server(ServerSocket serverSocket) throws IOException
@@ -57,23 +56,22 @@ public class Server {
 
     public void startTheGame() throws IOException {
         this.game = new Game();
-        this.whiteTurn = game.getBoard().whiteTurn;
+        this.whiteTurn = true;
         this.game.displayGameState();
 
+        this.outW.writeBoolean(true);
+        this.outW.flush();
+        this.outW.reset();
 
         this.outW.writeObject(boardState());
         this.outW.flush();
         this.outW.reset();
 
-        this.outW.writeBoolean(this.whiteTurn);
-        this.outW.flush();
-        this.outW.reset();
-
-        this.outB.writeObject(boardState());
+        this.outB.writeBoolean(false);
         this.outB.flush();
         this.outB.reset();
 
-        this.outB.writeBoolean(!this.whiteTurn);
+        this.outB.writeObject(boardState());
         this.outB.flush();
         this.outB.reset();
 
@@ -98,26 +96,15 @@ public class Server {
 
 
                         if(whiteTurn){
-                            System.out.println(game.isLegal(fields[0], fields[1]));
-                            outW.writeObject(game.isLegal(fields[0], fields[1]));
                             if(game.isLegal(fields[0], fields[1])){
                                 game.moveInString(fields[0].getX(), fields[0].getY(), fields[1].getX(), fields[1].getY());
                                 game.displayGameState();
                             }
 
-                            outW.flush();
-                            outW.reset();
-
-                            outW.writeObject(boardState());
+                            broadcastGameState();
 
                             whiteTurn = !whiteTurn;
                         }
-                        else{
-                            outW.writeBoolean(false);
-                        }
-
-                        outW.flush();
-                        outW.reset();
                     }
                 } catch (IOException e)
                 {
@@ -145,26 +132,15 @@ public class Server {
 
 
                         if(!whiteTurn){
-                            System.out.println(game.isLegal(fields[0], fields[1]));
-                            outB.writeObject(game.isLegal(fields[0], fields[1]));
                             if(game.isLegal(fields[0], fields[1])){
                                 game.moveInString(fields[0].getX(), fields[0].getY(), fields[1].getX(), fields[1].getY());
                                 game.displayGameState();
                             }
 
-                            outB.flush();
-                            outB.reset();
-
                             broadcastGameState();
 
                             whiteTurn = !whiteTurn;
                         }
-                        else{
-                            outB.writeBoolean(false);
-                        }
-
-                        outB.flush();
-                        outB.reset();
                     }
                 } catch (IOException e)
                 {
@@ -179,8 +155,8 @@ public class Server {
 
     public void broadcastGameState() throws IOException
     {
-        outW.writeObject(game.getBoard());
-        outB.writeObject(game.getBoard());
+        outW.writeObject(boardState());
+        outB.writeObject(boardState());
 
         outW.flush();
         outW.reset();

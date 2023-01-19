@@ -1,7 +1,5 @@
 package Widok;
 
-import Model.Board;
-import Model.Game;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

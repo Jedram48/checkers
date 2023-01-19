@@ -63,9 +63,9 @@ public class Black_square extends StackPane {
 
             if(color == Color.WHITE){this.circle.setStroke(Color.BLACK);}
             else if(color == Color.BLACK){this.circle.setStroke(Color.WHITE);}
-            else{removeCircle();}
 
             this.getChildren().add(this.circle);
+            this.occupied = true;
         }
         else{removeCircle();}
 
@@ -77,6 +77,7 @@ public class Black_square extends StackPane {
         if(this.circle!=null){
             this.getChildren().remove(this.circle);
             this.circle = null;
+            this.occupied = false;
         }
     }
 

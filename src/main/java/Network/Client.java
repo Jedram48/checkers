@@ -2,8 +2,6 @@ package Network;
 
 import Model.Board;
 import Model.Field;
-import Model.Game;
-import Widok.Window;
 
 import java.io.*;
 import java.net.Socket;
@@ -12,13 +10,15 @@ public class Client {
     private Socket socket;
     private ObjectInputStream in;
     private ObjectOutputStream out;
-    private boolean turn;
+    public boolean white;
 
     public Client() throws IOException
     {
         this.socket = new Socket("localhost", 1234);
         this.out = new ObjectOutputStream(socket.getOutputStream());
         this.in = new ObjectInputStream(socket.getInputStream());
+
+        this.white = in.readBoolean();
     }
 
     private void close() throws IOException {

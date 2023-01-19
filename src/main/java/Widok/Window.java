@@ -5,8 +5,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class Window {
 
     Group root = new Group();
@@ -14,7 +12,12 @@ public class Window {
     Scene scene = new Scene(root);
 
     public Window(){
-        this.root.getChildren().add(new Play_board().getBoard());
+        Play_board board = new Play_board();
+        this.root.getChildren().add(board.getBoard());
+
+        if(board.isWhite())this.stage.setTitle("White");
+        else{this.stage.setTitle("Black");}
+
         this.stage.setScene(scene);
         this.stage.show();
     }

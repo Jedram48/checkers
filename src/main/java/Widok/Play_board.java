@@ -5,6 +5,7 @@ import Model.Board;
 import Model.Piece_color;
 import Model.Field;
 import Network.Client;
+import javafx.application.Platform;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -27,20 +28,28 @@ public class Play_board extends Thread{
             throw new RuntimeException(e);
         }
 
+        if(connection.white)System.out.println("white");
+        else{System.out.println("black");}
+
         this.pane = new TilePane();
-        this.pane.setPrefColumns(8);
-        this.pane.setPrefRows(8);
+        this.pane.setPrefColumns(board.getSizeX());
+        this.pane.setPrefRows(board.getSizeY());
         genBoard(board);
         start();
     }
 
     @Override
     public void run(){
-        try {
-            refreshBoard(this.connection.loadBoard());
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        while(true){
+            try {
+                this.board = this.connection.loadBoard();
+                refreshBoard();
+            } catch (IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("Board received");
         }
+
     }
 
     private void setEvent(Black_square blacksquare){
@@ -48,45 +57,44 @@ public class Play_board extends Thread{
             if (blacksquare.isOccupied() && this.selected == null) {
                 this.selected = blacksquare;
             } else if (this.selected != null) {
-
-                 boolean valid = false;
-
-                do{Field[] fields = new Field[2];
+                    if((connection.white&& board.whiteTurn)||(!connection.white&&!board.whiteTurn)){
+                    Field[] fields = new Field[2];
                     fields[0] = this.board.getFields()[this.selected.row][this.selected.col];
                     fields[1] = this.board.getFields()[blacksquare.row][blacksquare.col];
                     try {
                         this.connection.sendMoves(fields);
-                        valid = this.connection.isValid();
-                    } catch (IOException | ClassNotFoundException e) {
+                        System.out.println("done");
+                    } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    System.out.println(valid);
-                    }
-                while(!valid);
-
+                }
+                else{System.out.println("Not your turn");}
                 this.selected = null;
             }
         });
     }
 
-    private void refreshBoard(Board board) throws IOException, ClassNotFoundException {
+    private void refreshBoard() throws IOException, ClassNotFoundException {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                int x = board.getSizeX();
+                int y = board.getSizeY();
+                Field[][] fields = board.getFields();
 
-        board.displayGamestate();
-        int x = board.getSizeX();
-        int y = board.getSizeY();
-        Field[][] fields = board.getFields();
+                for(int i = 0; i < y; i++) {
+                    for (int j = 0; j < x; j++) {
+                        Field field = fields[j][i];
 
-        for(int i = 0; i < y; i++) {
-            for (int j = 0; j < x; j++) {
-                Field field = fields[j][i];
-
-                if(field.getColor() == Piece_color.BLACK){
-                    if(!(field.getPieceColor()==grid[j][i].getPieceColor())){
-                        grid[j][i].setCircle(field.getPieceColor());
+                        if(field.getColor() == Piece_color.BLACK){
+                            if(!(field.getPieceColor()==grid[j][i].getPieceColor())){
+                                grid[j][i].setCircle(field.getPieceColor());
+                            }
+                        }
                     }
                 }
             }
-        }
+        });
     }
 
     private void genBoard(Board board){
@@ -100,14 +108,9 @@ public class Play_board extends Thread{
             for(int j = 0; j < x; j++){
                 Field field = fields[j][i];
 
-
                 if(field.getColor() == Piece_color.BLACK) {
-                    Black_square black = null;
+                    Black_square black = new Black_square(field.getX(), field.getY(), field.getPieceColor());
 
-                    if(field.getPieceColor() == null){black = new Black_square(field.getX(), field.getY());}
-                    else{
-                            black = new Black_square(field.getX(), field.getY(), field.getPieceColor());
-                    }
                     setEvent(black);
                     this.pane.getChildren().add(black);
                     this.grid[j][i] = black;
@@ -124,6 +127,10 @@ public class Play_board extends Thread{
 
     public TilePane getBoard(){
         return this.pane;
+    }
+
+    public boolean isWhite(){
+        return connection.white;
     }
 
 }
