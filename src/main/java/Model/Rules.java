@@ -5,30 +5,28 @@ public class Rules {
 
     public boolean isLegal(Board board, Field startField, Field endField)
     {
-        if (startField.piece == null) return false;
-        if (endField.piece != null) return false;
-        if (board.whiteTurn == true && startField.piece.color == Piece_color.BLACK) return false;
-        if (board.whiteTurn == false && startField.piece.color == Piece_color.WHITE) return false;
-        if (startField.piece.pieceType == PieceType.CHECKER) return isLegalforCHECKER(board, startField, endField);
-        else return isLegalforKING(board, startField, endField);
+        if(startField.piece == null) return false;
+        else if (board.whiteTurn && startField.piece.color == Piece_color.BLACK) return false;
+        else if (!board.whiteTurn && startField.piece.color == Piece_color.WHITE) return false;
+        else if (startField.piece.pieceType == PieceType.CHECKER) return isLegalforCHECKER(board, startField, endField);
+        else if(startField.piece.pieceType == PieceType.KING) return isLegalforKING(board, startField, endField);
+        else {return false;}
     }
 
     public boolean isLegalforCHECKER(Board board, Field startField, Field endField)
     {
-        int d = distance(board, startField, endField);
-        if (d == -1) return false;
-        if (isAttackPossible(board))
-        {
-            if (d != 2) return false;
-            if (CHECKERCanAtack(startField, board)) return true;
-            else return false;
+        int distance = distance(startField, endField);
+        if(distance == -1) return false;
+        else if(distance == 1 && moveForward(startField, endField)){
+            return !isAttackPossible(board) && !CHECKERCanAtack(startField,board) && endField.piece == null;
         }
-        else
-        {
-            if (d != 1) return false;
-            else if ( endField.piece == null) return true;
-            else return false;
+        else if(distance == 2){
+            if(startField.piece.pieceType == PieceType.CHECKER && CHECKERCanAtack(startField, board)){
+                try{if(getFieldOfEnemyPieceOnPath(startField, endField, board).getPieceColor() != startField.getPieceColor()) return endField.piece == null;}
+                catch (NullPointerException ignore){}
+            }
         }
+        return false;
     }
 
     public boolean isLegalforKING(Board board, Field startField, Field endField)
@@ -56,7 +54,14 @@ public class Rules {
         {
             for (int j = 0; j < board.sizeX; j++)
             {
-                if ( CHECKERCanAtack(board.Fields[j][i], board) || KINGcanAttack(board.Fields[j][i], board)) return true;
+                if(board.whiteTurn &&
+                        board.Fields[j][i].getPieceColor() == Piece_color.WHITE &&
+                        ((CHECKERCanAtack(board.Fields[j][i], board) && board.Fields[j][i].piece.pieceType == PieceType.CHECKER) ||
+                                (KINGcanAttack(board.Fields[j][i], board) && board.Fields[j][i].piece.pieceType == PieceType.KING))) return true;
+                else if(!board.whiteTurn &&
+                        board.Fields[j][i].getPieceColor() == Piece_color.BLACK &&
+                        ((CHECKERCanAtack(board.Fields[j][i], board) && board.Fields[j][i].piece.pieceType == PieceType.CHECKER) ||
+                                (KINGcanAttack(board.Fields[j][i], board) && board.Fields[j][i].piece.pieceType == PieceType.KING))) return true;
             }
         }
         return false;
@@ -64,39 +69,21 @@ public class Rules {
 
     public boolean CHECKERCanAtack(Field startField, Board board)
     {
-        if (startField.piece == null) return false;
-        if (startField.piece.pieceType == PieceType.KING) return false;
-        if (startField.piece.color == Piece_color.WHITE)
-        {
-            if ( board.validIndex(startField.x - 2, startField.y + 2) &&
-                    board.Fields[startField.x - 1][startField.y + 1].piece != null &&
-                    board.Fields[startField.x - 1][startField.y + 1].piece.color == Piece_color.BLACK &&
-                    board.Fields[startField.x - 2][startField.y + 2].piece == null) return true;
-            else if ( board.validIndex(startField.x + 2, startField.y - 2) &&
-                    board.Fields[startField.x + 1][startField.y + 1].piece != null &&
-                    board.Fields[startField.x + 1][startField.y + 1].piece.color == Piece_color.BLACK &&
-                    board.Fields[startField.x + 2][startField.y + 2].piece == null) return true;
-            else return false;
+        for(int a = -1; a < 2; a += 2){
+            for(int b = -1; b < 2; b += 2){
+                try{if(board.Fields[startField.getX() + 2 * a][startField.getY() + 2 * b].piece == null){
+                    if(board.Fields[startField.getX() + a][startField.getY() + b].piece != null &&
+                            board.Fields[startField.getX() + a][startField.getY() + b].getPieceColor() != startField.getPieceColor()) return true;
+                    }
+                }
+                catch (IndexOutOfBoundsException ignored){}
+            }
         }
-        else if (startField.piece.color == Piece_color.BLACK)
-        {
-            if ( board.validIndex(startField.x - 2, startField.y - 2) &&
-                    board.Fields[startField.x - 1][startField.y - 1].piece != null &&
-                    board.Fields[startField.x - 1][startField.y - 1].piece.color == Piece_color.WHITE &&
-                    board.Fields[startField.x - 2][startField.y - 2].piece == null) return true;
-            else if ( board.validIndex(startField.x + 2, startField.y - 2) &&
-                    board.Fields[startField.x + 1][startField.y - 1].piece != null &&
-                    board.Fields[startField.x + 1][startField.y - 1].piece.color == Piece_color.WHITE &&
-                    board.Fields[startField.x + 2][startField.y - 2].piece == null) return true;
-            else return false;
-        }
-        else return false;
+        return false;
     }
 
     public boolean KINGcanAttack(Field startField, Board board)
     {
-        if (startField.piece == null) return false;
-        if (startField.piece.pieceType == PieceType.CHECKER) return false;
         if ( KINGcanAttackinOneOfDiagonals(startField, board, 1) ||
         KINGcanAttackinOneOfDiagonals(startField, board, 2) ||
         KINGcanAttackinOneOfDiagonals(startField, board, 3) ||
@@ -176,10 +163,12 @@ public class Rules {
         }
         return false;
     }
-    int distance(Board board, Field startField, Field endField)
+    int distance(Field startField, Field endField)
     {
-        if ( Math.abs(startField.x - endField.x) != Math.abs(startField.y - endField.y)) return -1;
-        else return Math.abs(startField.x - endField.x);
+        if(Math.abs(startField.getX() - endField.getX()) ==
+                Math.abs(startField.getY() - endField.getY()))
+            return Math.abs(startField.getX() - endField.getX());
+        else return -1;
     }
 
     int enemyPiecesOnPath(Field startField, Field endField, Board board)
@@ -269,9 +258,10 @@ public class Rules {
 
         while(x != endField.x && y != endField.y)
         {
-            if(board.Fields[x][y].piece != null && board.Fields[x][y].piece.color == startField.piece.color) return null;
-            if(board.Fields[x][y].piece != null && board.Fields[x][y].piece.color != startField.piece.color)
-                return board.Fields[x][y];
+            if(board.Fields[x][y].piece != null){
+                if(board.Fields[x][y].piece.color != startField.piece.color)return  board.Fields[x][y];
+                else return null;
+            }
             x = x + Xincrementer;
             y = y + Yincrementer;
         }
@@ -309,6 +299,14 @@ public class Rules {
         }
         return true;
     }
+
+    private boolean moveForward(Field startField, Field endField){
+        if(startField.getPieceColor() == Piece_color.WHITE)return startField.getY() < endField.getY();
+        else if(startField.getPieceColor() == Piece_color.BLACK)return  startField.getY() > endField.getY();
+        return false;
+    }
+
+
 
     public boolean pieceCanMove(Field startField, Board board)
     {

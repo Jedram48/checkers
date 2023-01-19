@@ -81,6 +81,11 @@ public class Black_square extends StackPane {
         }
     }
 
+    public void changeToKing(){
+        this.circle.setStroke(Color.RED);
+        this.circle.setStrokeWidth(10);
+    }
+
     public void switchOccupation(){
         this.occupied = !this.occupied;
     }

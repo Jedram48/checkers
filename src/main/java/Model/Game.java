@@ -61,9 +61,9 @@ public class Game {
             {
                 endField.piece = startField.piece;
                 startField.piece = null;
+                changeToKing(endField);
                 board.whiteTurn = !board.whiteTurn;
                 return;
-
             }
             else if (startField.piece.pieceType == PieceType.CHECKER &&
                     board.distance(startField, endField) == 2 )
@@ -76,8 +76,15 @@ public class Game {
             }
             else if (startField.piece.pieceType == PieceType.KING)
             {
-                endField.piece = startField.piece;
-                rules.getFieldOfEnemyPieceOnPath(startField,endField,board).piece = null;
+                if(rules.enemyPiecesOnPath(startField, endField, board) == 0){
+                    endField.piece = startField.piece;
+                    startField.piece = null;
+                }
+                else if(rules.enemyPiecesOnPath(startField, endField, board) == 1){
+                    endField.piece = startField.piece;
+                    rules.getFieldOfEnemyPieceOnPath(startField,endField,board).piece = null;
+                    startField.piece = null;
+                }
             }
         }
         else
@@ -86,16 +93,13 @@ public class Game {
             return;
         }
 
-        if (!rules.CHECKERCanAtack(endField, board) && !rules.KINGcanAttack(endField, board))
+        if (!rules.canAttack(endField, board))
         {
             board.whiteTurn = !board.whiteTurn;
-            if ( endField.y == board.sizeY-1 &&
-                    endField.piece.pieceType == PieceType.CHECKER &&
-                    endField.piece.color == Piece_color.WHITE) endField.piece.pieceType = PieceType.KING;
-            else if ( endField.y == 0 &&
-                    endField.piece.pieceType == PieceType.CHECKER &&
-                    endField.piece.color == Piece_color.BLACK) endField.piece.pieceType = PieceType.KING;
+            changeToKing(endField);
         }
+
+
 
         if (rules.didBlackLost(board))
         {
@@ -107,7 +111,15 @@ public class Game {
             gameIsOn = false;
             System.out.println("BLACK WIN!");
         }
+    }
 
+    public void changeToKing(Field endField){
+        if ( endField.y == board.sizeY-1 &&
+                endField.piece.pieceType == PieceType.CHECKER &&
+                endField.piece.color == Piece_color.WHITE) endField.piece.pieceType = PieceType.KING;
+        else if ( endField.y == 0 &&
+                endField.piece.pieceType == PieceType.CHECKER &&
+                endField.piece.color == Piece_color.BLACK) endField.piece.pieceType = PieceType.KING;
     }
 
     public void startingPosition()
@@ -142,14 +154,6 @@ public class Game {
         board.whiteTurn = true;
     }
 
-    public void testPosition()
-    {
-       // board.Fields[0][0].piece = new Piece(Color.WHITE, PieceType.KING);
-        board.Fields[5][5].piece = new Piece(Piece_color.WHITE, PieceType.CHECKER);
-        board.Fields[6][6].piece = new Piece(Piece_color.BLACK, PieceType.CHECKER);
-
-        board.whiteTurn = true;
-    }
 
     public Board getBoard(){
         return this.board;

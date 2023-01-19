@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="test server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Field.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Rules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Rules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/TestingBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/TestingBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Black_square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Black_square.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Play_board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Play_board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Model/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Model/BoardTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +22,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -107,7 +107,7 @@
       <recent name="Model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestingBoard">
+  <component name="RunManager" selected="Application.Checkers">
     <configuration name="Checkers" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Widok.Checkers" />
       <module name="Checkers" />
@@ -199,9 +199,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestingBoard" />
         <item itemvalue="Application.Checkers" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.TestingBoard" />
         <item itemvalue="Application.Client2" />
         <item itemvalue="JUnit.BoardTest.simpleBoardTests" />
       </list>
@@ -238,7 +238,8 @@
       <workItem from="1673565677592" duration="6531000" />
       <workItem from="1673601087236" duration="6833000" />
       <workItem from="1673619678786" duration="11911000" />
-      <workItem from="1674088031246" duration="6286000" />
+      <workItem from="1674088031246" duration="6548000" />
+      <workItem from="1674153008615" duration="15656000" />
     </task>
     <task id="LOCAL-00001" summary="Initial version">
       <created>1671564315944</created>
@@ -373,7 +374,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674088563092</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="test server">
+      <created>1674094616157</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1674094616157</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

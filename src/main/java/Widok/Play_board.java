@@ -2,6 +2,7 @@ package Widok;
 
 
 import Model.Board;
+import Model.PieceType;
 import Model.Piece_color;
 import Model.Field;
 import Network.Client;
@@ -90,6 +91,8 @@ public class Play_board extends Thread{
                         if(field.getColor() == Piece_color.BLACK){
                             if(!(field.getPieceColor()==grid[j][i].getPieceColor())){
                                 grid[j][i].setCircle(field.getPieceColor());
+                                try{if(field.getType() == PieceType.KING)grid[j][i].changeToKing();}
+                                catch (NullPointerException ignore){}
                             }
                         }
                     }
