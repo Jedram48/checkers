@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="Tests added">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Rules.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Rules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Black_square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Black_square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Widok/Play_board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Widok/Play_board.java" afterDir="false" />
+    <list default="true" id="330b9ebd-afdf-447d-9a65-f6c724ba3659" name="Changes" comment="Comments added">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +241,7 @@
       <workItem from="1673619678786" duration="11911000" />
       <workItem from="1674088031246" duration="6548000" />
       <workItem from="1674153008615" duration="19496000" />
-      <workItem from="1674176896341" duration="6828000" />
+      <workItem from="1674176896341" duration="7146000" />
     </task>
     <task id="LOCAL-00001" summary="Initial version">
       <created>1671564315944</created>
@@ -413,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674181573848</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Comments added">
+      <created>1674183847473</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1674183847473</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,7 +459,8 @@
     <MESSAGE value="test server" />
     <MESSAGE value="Working version" />
     <MESSAGE value="Tests added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tests added" />
+    <MESSAGE value="Comments added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comments added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
