@@ -117,8 +117,8 @@ public class Board implements Serializable {
         return this.Fields;
     }
 
-    public boolean isWhite(){
-        return this.A1isWhite;
+    public boolean gameOver(){
+        return !this.gameIsOn;
     }
 
 }

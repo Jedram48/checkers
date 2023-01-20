@@ -1,10 +1,7 @@
 package Widok;
 
 
-import Model.Board;
-import Model.PieceType;
-import Model.Piece_color;
-import Model.Field;
+import Model.*;
 import Network.Client;
 import javafx.application.Platform;
 import javafx.scene.layout.TilePane;
@@ -20,6 +17,7 @@ public class Play_board extends Thread{
     private TilePane pane;
     private Black_square[][] grid;
     private Black_square selected;
+    private Game game;
     private Board board;
     public Play_board() {
         try {
@@ -41,17 +39,21 @@ public class Play_board extends Thread{
 
     @Override
     public void run(){
-        while(true){
+        while(this.connection.isConnected()){
             try {
                 this.board = this.connection.loadBoard();
-                refreshBoard();
-                board.displayGamestate();
+                if(this.board.gameOver()){
+                    System.out.println("Game over");
+                }
+                else{refreshBoard();
+                    board.displayGamestate();
+                }
             } catch (IOException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
+                System.out.println("Connection lost");
+                return;
             }
             System.out.println("Board received");
         }
-
     }
 
     private void setEvent(Black_square blacksquare){
@@ -125,6 +127,15 @@ public class Play_board extends Thread{
                     this.grid[j][i] = null;
                 }
             }
+        }
+    }
+
+    public void closeConnection(){
+        try {
+            this.connection.close();
+            System.out.println("Socket closed");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

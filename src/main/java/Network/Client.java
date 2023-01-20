@@ -10,6 +10,7 @@ public class Client {
     private Socket socket;
     private ObjectInputStream in;
     private ObjectOutputStream out;
+
     public boolean white;
 
     public Client() throws IOException
@@ -21,8 +22,7 @@ public class Client {
         this.white = in.readBoolean();
     }
 
-    private void close() throws IOException {
-
+    public void close() throws IOException {
         this.out.close();
         this.in.close();
         this.socket.close();
@@ -39,8 +39,8 @@ public class Client {
         return (Board) in.readObject();
     }
 
-    public boolean isValid() throws IOException, ClassNotFoundException {
-        return (boolean) in.readObject();
+    public boolean isConnected() {
+        return this.socket.isConnected();
     }
 
 

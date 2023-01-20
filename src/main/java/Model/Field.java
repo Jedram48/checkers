@@ -25,7 +25,10 @@ public class Field implements Serializable {
     public Piece_color getColor(){
         return this.color;
     }
-    public PieceType getType(){return this.piece.pieceType;}
+    public PieceType getType(){
+        if(piece!=null)return this.piece.pieceType;
+        else return null;
+    }
 
     public int getX(){
         return this.x;

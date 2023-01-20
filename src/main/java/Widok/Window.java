@@ -1,6 +1,5 @@
 package Widok;
 
-import Model.Board;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -19,6 +18,8 @@ public class Window {
         else{this.stage.setTitle("Black");}
 
         this.stage.setScene(scene);
+        this.stage.setResizable(false);
+        this.stage.setOnCloseRequest(windowEvent -> {board.closeConnection();});
         this.stage.show();
     }
 

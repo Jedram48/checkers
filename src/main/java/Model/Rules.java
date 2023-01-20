@@ -35,17 +35,14 @@ public class Rules {
         {
             if(KINGcanAttack(startField,board))
             {
-                if(enemyPiecesOnPath(startField,endField,board) == 1)
-                    return true;
+                return enemyPiecesOnPath(startField, endField, board) == 1;
             }
             else return false;
         }
         else
         {
-            if (enemyPiecesOnPath(startField, endField, board) == 0) return true;
-            else return false;
+            return enemyPiecesOnPath(startField, endField, board) == 0;
         }
-        return false;
 
     }
     public boolean isAttackPossible(Board board)

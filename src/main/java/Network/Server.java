@@ -93,6 +93,7 @@ public class Server {
                     while(true)
                     {
                         Field[] fields = (Field[]) inW.readObject();
+
                         System.out.println(fields[0].getX() + " " + fields[0].getY() + " " + fields[1].getX() + " " + fields[1].getY());
 
                         if(whiteTurn){
