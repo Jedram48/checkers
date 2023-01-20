@@ -3,6 +3,13 @@ package Model;
 public class Rules {
 
 
+    /***
+     * Check if move is valid based on selected fields and board state
+     * @param board current board state
+     * @param startField start of move
+     * @param endField end of move
+     * @return boolean
+     */
     public boolean isLegal(Board board, Field startField, Field endField)
     {
         if(startField.piece == null) return false;
@@ -13,6 +20,13 @@ public class Rules {
         else {return false;}
     }
 
+    /***
+     * Check if move is valid for common checker
+     * @param board current board state
+     * @param startField start of move
+     * @param endField end of move
+     * @return boolean
+     */
     public boolean isLegalforCHECKER(Board board, Field startField, Field endField)
     {
         int distance = distance(startField, endField);
@@ -29,6 +43,13 @@ public class Rules {
         return false;
     }
 
+    /***
+     * Check if move is valid for king
+     * @param board current board state
+     * @param startField start of move
+     * @param endField end of move
+     * @return boolean
+     */
     public boolean isLegalforKING(Board board, Field startField, Field endField)
     {
         if (isAttackPossible(board))
@@ -45,6 +66,12 @@ public class Rules {
         }
 
     }
+
+    /***
+     * Check if active side can perform any attack
+     * @param board current board state
+     * @return boolean
+     */
     public boolean isAttackPossible(Board board)
     {
         for(int i = 0; i < board.sizeY; i++)
@@ -64,6 +91,12 @@ public class Rules {
         return false;
     }
 
+    /***
+     * Check if given checker can perform attack
+     * @param startField field with checker
+     * @param board current board state
+     * @return boolean
+     */
     public boolean CHECKERCanAtack(Field startField, Board board)
     {
         for(int a = -1; a < 2; a += 2){
@@ -79,6 +112,12 @@ public class Rules {
         return false;
     }
 
+    /***
+     * Check if king on given field can perform attack
+     * @param startField field with king
+     * @param board current board state
+     * @return boolean
+     */
     public boolean KINGcanAttack(Field startField, Board board)
     {
         if ( KINGcanAttackinOneOfDiagonals(startField, board, 1) ||
@@ -88,35 +127,47 @@ public class Rules {
         return false;
     }
 
+    /***
+     * Check if any unite can attack from this field
+     * @param startField field with unite
+     * @param board current board state
+     * @return boolean
+     */
     public boolean canAttack(Field startField, Board board){
         if(startField.piece.pieceType == PieceType.CHECKER)return CHECKERCanAtack(startField, board);
         else if(startField.piece.pieceType == PieceType.KING)return  KINGcanAttack(startField, board);
         else return false;
     }
 
+    /***
+     * Check if king can attack on any diagonal
+     * @param startField start position of king
+     * @param board current board state
+     * @param diagonalNumber diagonal of attack
+     * @return boolean
+     */
     public boolean KINGcanAttackinOneOfDiagonals(Field startField, Board board, int diagonalNumber)
     {
         int x = -1;
         int y = -1;
 
-        switch (diagonalNumber)
-        {
-            case 1:
+        switch (diagonalNumber) {
+            case 1 -> {
                 x = startField.x + 1;
                 y = startField.y + 1;
-                break;
-            case 2:
+            }
+            case 2 -> {
                 x = startField.x - 1;
                 y = startField.y + 1;
-                break;
-            case 3:
+            }
+            case 3 -> {
                 x = startField.x - 1;
                 y = startField.y - 1;
-                break;
-            case 4:
+            }
+            case 4 -> {
                 x = startField.x + 1;
                 y = startField.y - 1;
-                break;
+            }
         }
 
         boolean enemyPieceFound = false;
@@ -125,8 +176,7 @@ public class Rules {
         {
             if (enemyPieceFound)
             {
-                if (board.Fields[x][y].piece == null) return true;
-                else return false;
+                return board.Fields[x][y].piece == null;
             }
             else
             {
@@ -138,28 +188,34 @@ public class Rules {
                 }
             }
 
-            switch (diagonalNumber)
-            {
-                case 1:
+            switch (diagonalNumber) {
+                case 1 -> {
                     x++;
                     y++;
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     x--;
                     y++;
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     x--;
                     y--;
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     x++;
                     y--;
-                    break;
+                }
             }
         }
         return false;
     }
+
+    /***
+     * Calculate amount of fields between start position and end position
+     * @param startField start position
+     * @param endField end positoin
+     * @return Integer
+     */
     int distance(Field startField, Field endField)
     {
         if(Math.abs(startField.getX() - endField.getX()) ==
@@ -168,6 +224,13 @@ public class Rules {
         else return -1;
     }
 
+    /***
+     * Calculate how many unites between start position and end position
+     * @param startField start position
+     * @param endField end position
+     * @param board current board state
+     * @return Integer
+     */
     int enemyPiecesOnPath(Field startField, Field endField, Board board)
     {
         if (startField == endField) return -1;
@@ -217,6 +280,13 @@ public class Rules {
         return enemyPiecesFound;
     }
 
+    /***
+     * Get field with unite between start position and end position
+     * @param startField start position
+     * @param endField end position
+     * @param board current board state
+     * @return Field
+     */
     public Field getFieldOfEnemyPieceOnPath(Field startField, Field endField, Board board)
     {
         if (startField == endField) return null;
@@ -266,7 +336,11 @@ public class Rules {
     }
 
 
-
+    /***
+     * Check if white lost
+     * @param board current board state
+     * @return boolean
+     */
     public boolean didWhiteLost(Board board)
     {
         for (int i = 0 ; i < board.sizeY; i++)
@@ -282,6 +356,11 @@ public class Rules {
         return true;
     }
 
+    /***
+     * Check if black lost
+     * @param board current board state
+     * @return boolean
+     */
     public boolean didBlackLost(Board board)
     {
         for (int i = 0 ; i < board.sizeY; i++)
@@ -297,6 +376,12 @@ public class Rules {
         return true;
     }
 
+    /***
+     * Check if checker moves in correct direction
+     * @param startField start position
+     * @param endField end position
+     * @return boolean
+     */
     private boolean moveForward(Field startField, Field endField){
         if(startField.getPieceColor() == Piece_color.WHITE)return startField.getY() < endField.getY();
         else if(startField.getPieceColor() == Piece_color.BLACK)return  startField.getY() > endField.getY();
@@ -304,7 +389,12 @@ public class Rules {
     }
 
 
-
+    /***
+     * Check if unite on given field can perform move
+     * @param startField field with unite
+     * @param board current board state
+     * @return boolean
+     */
     public boolean pieceCanMove(Field startField, Board board)
     {
         int x = startField.x;
@@ -343,17 +433,4 @@ public class Rules {
             return false;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

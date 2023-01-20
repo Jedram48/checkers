@@ -3,12 +3,14 @@ package Model;
 import java.io.Serializable;
 
 public class Piece implements Serializable {
-    /**
-     * zmienna pieceType informuje o tym czy figura jest zwyklym pionkiem(CHECKER) czy krolem(KING)
-     */
     Piece_color color;
     PieceType pieceType;
 
+    /***
+     * Create unite of checker or king
+     * @param piececolor color of unite
+     * @param pieceType type of unite
+     */
     public Piece(Piece_color piececolor, PieceType pieceType)
     {
         this.color = piececolor;

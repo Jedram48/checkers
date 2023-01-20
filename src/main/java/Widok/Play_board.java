@@ -10,7 +10,6 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 
-
 public class Play_board extends Thread{
 
     private Client connection;
@@ -19,6 +18,10 @@ public class Play_board extends Thread{
     private Black_square selected;
     private Game game;
     private Board board;
+
+    /***
+     * Connects with server and creates pane with fields and checkers on it based board state received from server
+     */
     public Play_board() {
         try {
             this.connection = new Client();
@@ -37,6 +40,9 @@ public class Play_board extends Thread{
         start();
     }
 
+    /***
+     * Thread that receives refreshed board from server
+     */
     @Override
     public void run(){
         while(this.connection.isConnected()){
@@ -56,6 +62,10 @@ public class Play_board extends Thread{
         }
     }
 
+    /***
+     * Set event handler on field to mark selected field and perform move
+     * @param blacksquare field for which event will be set
+     */
     private void setEvent(Black_square blacksquare){
         blacksquare.setOnMouseClicked(event -> {
             if (blacksquare.isOccupied() && this.selected == null) {
@@ -78,6 +88,11 @@ public class Play_board extends Thread{
         });
     }
 
+    /***
+     * Mages changes in board state based on board received from server
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     private void refreshBoard() throws IOException, ClassNotFoundException {
         Platform.runLater(new Runnable() {
             @Override
@@ -103,6 +118,10 @@ public class Play_board extends Thread{
         });
     }
 
+    /***
+     * Generates board based on board state given in parameter
+     * @param board board state that will be generated
+     */
     private void genBoard(Board board){
         int x = board.getSizeX();
         int y = board.getSizeY();
@@ -130,6 +149,9 @@ public class Play_board extends Thread{
         }
     }
 
+    /***
+     * Closes connection with server
+     */
     public void closeConnection(){
         try {
             this.connection.close();
@@ -139,11 +161,18 @@ public class Play_board extends Thread{
         }
     }
 
-
+    /***
+     * Gets pane with received board state
+     * @return
+     */
     public TilePane getBoard(){
         return this.pane;
     }
 
+    /***
+     * Gets side which related to board
+     * @return
+     */
     public boolean isWhite(){
         return connection.white;
     }

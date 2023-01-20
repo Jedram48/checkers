@@ -1,16 +1,14 @@
 package Model;
 
-/**
- * Klasa game laczy metody klasy rules z klasa Board
- */
+
 public class Game {
 
     public Board board;
     public boolean gameIsOn;
     public Rules rules;
 
-    /**
-     * Klasa rules uwzglednia zasady gry i pozwala na wykonywanie okreslonych ruchow.
+    /***
+     * Create new game and puts unites on start position
      */
     public Game()
     {
@@ -19,38 +17,57 @@ public class Game {
         this.gameIsOn = true;
         startingPosition();
     }
+
+    /***
+     * Displays current game state in console
+     */
     public void displayGameState()
     {
         board.displayGamestate();
     }
 
-    public boolean isLegalInString(int x, int y, int x2, int y2)
-    /**
-     * Wykonuje metode isLegal() z klasy rules, przekazujac odpowiednie liczby x,y,x2,y2 jako wspolrzedne pol.
+    /***
+     * Check if move is valid based on position of fields
+     * @param x column of start field
+     * @param y row of start field
+     * @param x2 column of end field
+     * @param y2 row of end field
+     * @return boolean
      */
+    public boolean isLegalInString(int x, int y, int x2, int y2)
     {
         return rules.isLegal(board, board.Fields[x][y], board.Fields[x2][y2]);
     }
 
-    public void moveInString(int x, int y, int x2, int y2)
-    /**
-     * Wykonuje metode move(), przekazujac odpowiednie liczby x,y,x2,x2 jako wspolrzedne pol.
+    /***
+     * Perform move for given field positions
+     * @param x column of start field
+     * @param y row of start field
+     * @param x2 column of end field
+     * @param y2 row of end field
      */
+    public void moveInString(int x, int y, int x2, int y2)
     {
         move(board.Fields[x][y], board.Fields[x2][y2]);
     }
 
+    /***
+     * Check if move is valid based on instances of Field class
+     * @param startField start field
+     * @param endField end field
+     * @return boolean
+     */
     public boolean isLegal(Field startField, Field endField){
         return rules.isLegal(board, startField, endField);
     }
-    public void move(Field startField, Field endField)
-    /**
-     * Sprawdza czy ruch z pola startField na pole endField jest zgodny z zasadami.
-     * Jesli tak - wykonuje ruch zmieniajac stany poszczegolnych pol.
-     * Jesli nie - wyswietla komunikat "BAD MOVE"
-     * Jesli po wykonaniu ruchu nie ma kolejnej mozliwosci zbicia to zmienia wartosc zmiennej whiteTurn
-     * Jesli metoda rules.didWhiteLost(Board board) lub rules.didBlackLost(Board board) zwroci true to parametr gameIsOn zmienia wartosc na false
+
+    /***
+     * Perform move for given fields if move is valid and don't perform if move isn't valid
+     * Based on performed move changes whole board state
+     * @param startField start position of unite
+     * @param endField end position of unite
      */
+    public void move(Field startField, Field endField)
     {
         if(rules.isLegal(board, startField, endField))
         {
@@ -110,6 +127,10 @@ public class Game {
         }
     }
 
+    /***
+     * Change checker to king if it is allowed
+     * @param endField end position of unite
+     */
     public void changeToKing(Field endField){
         if ( endField.y == board.sizeY-1 &&
                 endField.piece.pieceType == PieceType.CHECKER &&
@@ -119,10 +140,11 @@ public class Game {
                 endField.piece.color == Piece_color.BLACK) endField.piece.pieceType = PieceType.KING;
     }
 
-    public void startingPosition()
-    /**
-     * ustawia pionki na szachownicy w pozycji startowej
+
+    /***
+     * Puts checkers to start position on board
      */
+    public void startingPosition()
     {
         for(int i = board.sizeY - 3; i < board.sizeY; i++)
         {
@@ -152,6 +174,10 @@ public class Game {
     }
 
 
+    /***
+     * Gets current board state of the game
+     * @return Board
+     */
     public Board getBoard(){
         return this.board;
     }

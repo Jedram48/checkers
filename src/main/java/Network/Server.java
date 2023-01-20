@@ -24,9 +24,13 @@ public class Server {
     private Game game;
     private boolean whiteTurn;
 
-    public Server(ServerSocket serverSocket) throws IOException
+    /***
+     * Create new server socket and wait for players to connect
+     * @throws IOException
+     */
+    public Server() throws IOException
     {
-        this.serverSocket = serverSocket;
+        this.serverSocket = new ServerSocket(1234);
         System.out.println("Waiting for players to connect...");
         this.white = serverSocket.accept();
         System.out.println("Player 1 connected");
@@ -41,19 +45,10 @@ public class Server {
         System.out.println("Connection finished");
     }
 
-    private void close() throws IOException {
-        this.outW.close();
-        this.outB.close();
-
-        this.inW.close();
-        this.inB.close();
-
-        this.white.close();
-        this.black.close();
-
-        this.serverSocket.close();
-    }
-
+    /***
+     * Start the game and send newly generated board to players
+     * @throws IOException
+     */
     public void startTheGame() throws IOException {
         this.game = new Game();
         this.whiteTurn = true;
@@ -79,10 +74,17 @@ public class Server {
         listenToBlack();
     }
 
+    /***
+     * Gets current board state of the game
+     * @return
+     */
     private Board boardState(){
         return game.getBoard();
     }
 
+    /***
+     * Receive and send all changes on board from player on white side
+     */
     public void listenToWhite()
     {
         new Thread(new Runnable() {
@@ -118,6 +120,9 @@ public class Server {
         }).start();
     }
 
+    /***
+     * Receive and send all changes on board from player on black side
+     */
     public void listenToBlack()
     {
         new Thread(new Runnable() {
@@ -152,6 +157,10 @@ public class Server {
         }).start();
     }
 
+    /***
+     * Send board state to both players
+     * @throws IOException
+     */
     public void broadcastGameState() throws IOException
     {
         outW.writeObject(boardState());
@@ -168,8 +177,7 @@ public class Server {
 
     public static void main(String[] args) throws IOException
     {
-        ServerSocket serverSocket = new ServerSocket(1234);
-        Server server = new Server(serverSocket);
+        Server server = new Server();
         server.startTheGame();
 
     }

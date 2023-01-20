@@ -2,18 +2,8 @@ package Model;
 
 import java.io.Serializable;
 
-/**
- * Klasa Board reprezentuje aktualny stan gry.
- */
+
 public class Board implements Serializable {
-    /**
-     *
-     * @param sizeX szerokosc planszy
-     * @param sizeY wysokosc planszy
-     * @param A1isWhite jesli = true to uklad przekatnych bedzie taki, ze pole w lewym dolnym rogu pole jest biale.
-     *                  jesli = false to uklad przekatnych bedzie taki, ze pole w lewym dolnym rogu pole jest czarne.
-     * @param gameIsOn informuje o stanie gry.
-     */
 
     Field[][] Fields;
     int sizeX;
@@ -23,6 +13,12 @@ public class Board implements Serializable {
     boolean gameIsOn;
 
 
+    /***
+     * Creates new board with given size
+     * @param sizeX columns
+     * @param sizeY rows
+     * @param A1isWhite first field is white
+     */
     public Board(int sizeX, int sizeY, boolean A1isWhite)
     {
         this.Fields = new Field[sizeX][sizeY];
@@ -34,6 +30,9 @@ public class Board implements Serializable {
     }
 
 
+    /***
+     * Displays current game state to terminal
+     */
     public void displayGamestate()
     {
         for(int i = sizeY -1 ; i >= 0; i--)
@@ -61,6 +60,10 @@ public class Board implements Serializable {
         System.out.println("White turn: " + whiteTurn);
     }
 
+    /***
+     * Generates grid for board based on board size
+     * @param A1isWhite first field is white
+     */
     public void giveColorsToFields(boolean A1isWhite)
     {
         if(A1isWhite)
@@ -87,36 +90,59 @@ public class Board implements Serializable {
         }
     }
 
-    public boolean validIndex(int x, int y)
-    /**
-     * sprawdza czy na planszy istnieje pole o wspolrzednych x i y
+    /***
+     * Check if field with given position exists
+     * @param x column
+     * @param y row
+     * @return boolean
      */
+    public boolean validIndex(int x, int y)
     {
         if (x < 0 || x >= sizeX || y < 0 || y >= sizeY) return false;
         else return true;
     }
 
-    public int distance(Field startField, Field endField)
-    /**
-     * zwraca ilosc pol pomiedzy dwoma polami na przekatnej
+    /***
+     * Calculate amount of fields between start position and end position
+     * @param startField start position
+     * @param endField end position
+     * @return Integer
      */
+    public int distance(Field startField, Field endField)
+
     {
         if(Math.abs(startField.x - endField.x) != Math.abs(startField.y - endField.y)) return -1;
         else return Math.abs(startField.x - endField.x);
     }
 
+    /***
+     * Gets number of columns on board
+     * @return Integer
+     */
     public int getSizeX() {
         return this.sizeX;
     }
 
+    /***
+     * Gets number of rows on board
+     * @return Integer
+     */
     public int getSizeY(){
         return this.sizeY;
     }
 
+    /***
+     * Gets array with all fields on board
+     * @return boolean
+     */
     public Field[][] getFields(){
         return this.Fields;
     }
 
+    /***
+     * Get current status of game
+     * @return boolean
+     */
     public boolean gameOver(){
         return !this.gameIsOn;
     }

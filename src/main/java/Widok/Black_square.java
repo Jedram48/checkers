@@ -17,12 +17,12 @@ public class Black_square extends StackPane {
     boolean occupied = false;
     private Piece_color color;
 
-    Black_square(int x, int y){
-        super();
-        this.row = x;
-        this.col = y;
-        this.getChildren().add(rect);
-    }
+    /***
+     * Creates black field with or without checker
+     * @param x horizontal position of field on board
+     * @param y vertical position of field on board
+     * @param color color of checker on field
+     */
     Black_square(int x, int y, Piece_color color){
         super();
         this.row = x;
@@ -34,24 +34,50 @@ public class Black_square extends StackPane {
 
     }
 
+    /***
+     * Gets the value of column
+     * @return Returns horizontal position of field
+     */
     public int getPosX(){
         return this.row;
     }
 
+    /***
+     * Gets the value of row
+     * @return Returns vertical position of field
+     */
     public int getPosY(){
         return this.col;
     }
 
+    /***
+     * Set color of checker
+     * @param color new color of checker
+     */
     public void setColor(Color color){
         this.circle.setFill(color);
     }
+
+    /***
+     * Gets color of checker
+     * @return Returns instance of class Color
+     */
     Color getColor(){
         return (Color) this.circle.getFill();
     }
+
+    /***
+     * Gets color of checker
+     * @return Return instance of enum class Piece_color
+     */
     Piece_color getPieceColor(){
         return this.color;
     }
 
+    /***
+     * Set a new circle on field
+     * @param pieceColor Color of checker that will be on field
+     */
     public void setCircle(Piece_color pieceColor){
         Color color = null;
 
@@ -73,6 +99,9 @@ public class Black_square extends StackPane {
 
     }
 
+    /***
+     * Removes checker from field
+     */
     public void removeCircle(){
         if(this.circle!=null){
             this.getChildren().remove(this.circle);
@@ -81,15 +110,25 @@ public class Black_square extends StackPane {
         }
     }
 
+    /***
+     * Changes common checker to king
+     */
     public void changeToKing(){
         this.circle.setStroke(Color.RED);
         this.circle.setStrokeWidth(10);
     }
 
+    /***
+     * Switches occupation of field
+     */
     public void switchOccupation(){
         this.occupied = !this.occupied;
     }
 
+    /***
+     * Get field occupation state
+     * @return boolean state of field occupation
+     */
     public boolean isOccupied(){
         return occupied;
     }
